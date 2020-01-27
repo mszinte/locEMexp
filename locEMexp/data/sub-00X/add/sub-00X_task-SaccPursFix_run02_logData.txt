@@ -1,0 +1,44 @@
+sequence 1 started at 1579714680.067089
+sequence 1 event mri_trigger val = -8 at 1579714680.082770
+sequence 1 trial 1 onset at 1579714680.100067
+sequence 1 trial 1 offset at 1579714681.180939
+sequence 1 trial 2 onset at 1579714681.198268
+sequence 1 trial 2 offset at 1579714682.280752
+sequence 1 trial 3 onset at 1579714682.297671
+sequence 1 trial 3 offset at 1579714683.380585
+sequence 1 trial 4 onset at 1579714683.398216
+sequence 1 trial 4 offset at 1579714684.480523
+sequence 1 trial 5 onset at 1579714684.498176
+sequence 1 trial 5 offset at 1579714685.580504
+sequence 1 trial 6 onset at 1579714685.598149
+sequence 1 trial 6 offset at 1579714686.680599
+sequence 1 trial 7 onset at 1579714686.697728
+sequence 1 trial 7 offset at 1579714687.780556
+sequence 1 trial 8 onset at 1579714687.797438
+sequence 1 trial 8 offset at 1579714688.880497
+sequence 1 trial 9 onset at 1579714688.897391
+sequence 1 trial 9 offset at 1579714689.980389
+sequence 1 trial 10 onset at 1579714689.998044
+sequence 1 trial 10 offset at 1579714691.080499
+sequence 1 trial 11 onset at 1579714691.097993
+sequence 1 trial 11 offset at 1579714692.180416
+sequence 1 trial 12 onset at 1579714692.197966
+sequence 1 trial 12 offset at 1579714693.280456
+sequence 1 trial 13 onset at 1579714693.297938
+sequence 1 trial 13 offset at 1579714694.380404
+sequence 1 trial 14 onset at 1579714694.397910
+sequence 1 trial 14 offset at 1579714695.480340
+sequence 1 trial 15 onset at 1579714695.497875
+sequence 1 trial 15 offset at 1579714696.580315
+sequence 1 trial 16 onset at 1579714696.597845
+sequence 1 trial 16 offset at 1579714697.680266
+sequence 1 - 0 missed sync on 1056 frames, 0.0% (mean/median delay = NaN/NaN ms)
+sequence 1 stopped at 1579714697.692092
+sequence 2 started at 1579714697.692292
+sequence 2 trial 1 onset at 1579714697.714488
+sequence 2 trial 1 pursuit onset at 1579714697.714789
+sequence 2 trial 1 pursuit offset at 1579714698.697183
+sequence 2 trial 1 offset at 1579714698.796940
+sequence 2 trial 2 onset at 1579714698.814451
+sequence 2 trial 2 saccade onset at 1579714698.814760
+sequence 2 trial 2 offset at 1579714699.896919
