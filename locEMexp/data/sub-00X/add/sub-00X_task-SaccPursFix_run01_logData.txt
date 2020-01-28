@@ -1,221 +1,221 @@
-sequence 1 started at 1580204354.901068
-sequence 1 event mri_trigger val = -8 at 1580204354.916006
-sequence 1 trial 1 onset at 1580204354.950721
-sequence 1 trial 1 offset at 1580204356.131566
+sequence 1 started at 1580214545.058733
+sequence 1 event mri_trigger val = -8 at 1580214545.076775
+sequence 1 trial 1 onset at 1580214545.110756
+sequence 1 trial 1 offset at 1580214546.292202
 sequence 1 - 0 missed sync on 72 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 1 stopped at 1580204356.139600
-sequence 2 started at 1580204356.139808
-sequence 2 trial 1 onset at 1580204356.148094
-sequence 2 trial 1 pursuit onset at 1580204356.148427
-sequence 2 trial 1 pursuit offset at 1580204357.131468
-sequence 2 trial 1 offset at 1580204357.331082
-sequence 2 trial 2 onset at 1580204357.348745
-sequence 2 trial 2 pursuit onset at 1580204357.348835
-sequence 2 trial 2 pursuit offset at 1580204358.331038
-sequence 2 trial 2 offset at 1580204358.531042
+sequence 1 stopped at 1580214546.300195
+sequence 2 started at 1580214546.300443
+sequence 2 trial 1 onset at 1580214546.308758
+sequence 2 trial 1 pursuit onset at 1580214546.309153
+sequence 2 trial 1 pursuit offset at 1580214547.292097
+sequence 2 trial 1 offset at 1580214547.491859
+sequence 2 trial 2 onset at 1580214547.509507
+sequence 2 trial 2 pursuit onset at 1580214547.509602
+sequence 2 trial 2 pursuit offset at 1580214548.491867
+sequence 2 trial 2 offset at 1580214548.691833
 sequence 2 - 0 missed sync on 144 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 2 stopped at 1580204358.531544
-sequence 3 started at 1580204358.531577
-sequence 3 trial 1 onset at 1580204358.548715
-sequence 3 trial 1 offset at 1580204359.731030
+sequence 2 stopped at 1580214548.692403
+sequence 3 started at 1580214548.692436
+sequence 3 trial 1 onset at 1580214548.709482
+sequence 3 trial 1 offset at 1580214549.891801
 sequence 3 - 0 missed sync on 72 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 3 stopped at 1580204359.731546
-sequence 4 started at 1580204359.731594
-sequence 4 trial 1 onset at 1580204359.748678
-sequence 4 trial 1 pursuit onset at 1580204359.748781
-sequence 4 trial 1 pursuit offset at 1580204360.731016
-sequence 4 trial 1 offset at 1580204360.930995
-sequence 4 trial 2 onset at 1580204360.948634
-sequence 4 trial 2 pursuit onset at 1580204360.948721
-sequence 4 trial 2 pursuit offset at 1580204361.930957
-sequence 4 trial 2 offset at 1580204362.131069
+sequence 3 stopped at 1580214549.892357
+sequence 4 started at 1580214549.892390
+sequence 4 trial 1 onset at 1580214549.909484
+sequence 4 trial 1 pursuit onset at 1580214549.909597
+sequence 4 trial 1 pursuit offset at 1580214550.891770
+sequence 4 trial 1 offset at 1580214551.091758
+sequence 4 trial 2 onset at 1580214551.109415
+sequence 4 trial 2 pursuit onset at 1580214551.109507
+sequence 4 trial 2 pursuit offset at 1580214552.091738
+sequence 4 trial 2 offset at 1580214552.291763
 sequence 4 - 0 missed sync on 144 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 4 stopped at 1580204362.131639
-sequence 5 started at 1580204362.131673
-sequence 5 trial 1 onset at 1580204362.148622
-sequence 5 trial 1 offset at 1580204363.330956
+sequence 4 stopped at 1580214552.293929
+sequence 5 started at 1580214552.294063
+sequence 5 trial 1 onset at 1580214552.308918
+sequence 5 trial 1 offset at 1580214553.491705
 sequence 5 - 0 missed sync on 72 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 5 stopped at 1580204363.331474
-sequence 6 started at 1580204363.331521
-sequence 6 trial 1 onset at 1580204363.348593
-sequence 6 trial 1 pursuit onset at 1580204363.348699
-sequence 6 trial 1 pursuit offset at 1580204364.330912
-sequence 6 trial 1 offset at 1580204364.530902
-sequence 6 trial 2 onset at 1580204364.548539
-sequence 6 trial 2 pursuit onset at 1580204364.548629
-sequence 6 trial 2 pursuit offset at 1580204365.530929
-sequence 6 trial 2 offset at 1580204365.730928
+sequence 5 stopped at 1580214553.492269
+sequence 6 started at 1580214553.492302
+sequence 6 trial 1 onset at 1580214553.509352
+sequence 6 trial 1 pursuit onset at 1580214553.509445
+sequence 6 trial 1 pursuit offset at 1580214554.491714
+sequence 6 trial 1 offset at 1580214554.691703
+sequence 6 trial 2 onset at 1580214554.708702
+sequence 6 trial 2 pursuit onset at 1580214554.708802
+sequence 6 trial 2 pursuit offset at 1580214555.691648
+sequence 6 trial 2 offset at 1580214555.891654
 sequence 6 - 0 missed sync on 144 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 6 stopped at 1580204365.731440
-sequence 7 started at 1580204365.731486
-sequence 7 trial 1 onset at 1580204365.748504
-sequence 7 trial 1 offset at 1580204366.930837
+sequence 6 stopped at 1580214555.892202
+sequence 7 started at 1580214555.892234
+sequence 7 trial 1 onset at 1580214555.909286
+sequence 7 trial 1 offset at 1580214557.091614
 sequence 7 - 0 missed sync on 72 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 7 stopped at 1580204366.931337
-sequence 8 started at 1580204366.931370
-sequence 8 trial 1 onset at 1580204366.948470
-sequence 8 trial 1 pursuit onset at 1580204366.948560
-sequence 8 trial 1 pursuit offset at 1580204367.930822
-sequence 8 trial 1 offset at 1580204368.130949
-sequence 8 trial 2 onset at 1580204368.148078
-sequence 8 trial 2 pursuit onset at 1580204368.148185
-sequence 8 trial 2 pursuit offset at 1580204369.130886
-sequence 8 trial 2 offset at 1580204369.330741
+sequence 7 stopped at 1580214557.092172
+sequence 8 started at 1580214557.092205
+sequence 8 trial 1 onset at 1580214557.109252
+sequence 8 trial 1 pursuit onset at 1580214557.109344
+sequence 8 trial 1 pursuit offset at 1580214558.091611
+sequence 8 trial 1 offset at 1580214558.291572
+sequence 8 trial 2 onset at 1580214558.309217
+sequence 8 trial 2 pursuit onset at 1580214558.309319
+sequence 8 trial 2 pursuit offset at 1580214559.291666
+sequence 8 trial 2 offset at 1580214559.491526
 sequence 8 - 0 missed sync on 144 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 8 stopped at 1580204369.331238
-sequence 9 started at 1580204369.331271
-sequence 9 trial 1 onset at 1580204369.348415
-sequence 9 trial 1 offset at 1580204370.530734
+sequence 8 stopped at 1580214559.492072
+sequence 9 started at 1580214559.492105
+sequence 9 trial 1 onset at 1580214559.509189
+sequence 9 trial 1 offset at 1580214560.691497
 sequence 9 - 0 missed sync on 72 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 9 stopped at 1580204370.531248
-sequence 10 started at 1580204370.531295
-sequence 10 trial 1 onset at 1580204370.548363
-sequence 10 trial 1 saccade onset at 1580204370.548692
-sequence 10 trial 1 offset at 1580204371.730691
-sequence 10 trial 2 onset at 1580204371.748331
-sequence 10 trial 2 saccade onset at 1580204371.748421
-sequence 10 trial 2 offset at 1580204372.930660
+sequence 9 stopped at 1580214560.692022
+sequence 10 started at 1580214560.692074
+sequence 10 trial 1 onset at 1580214560.709152
+sequence 10 trial 1 saccade onset at 1580214560.709486
+sequence 10 trial 1 offset at 1580214561.891476
+sequence 10 trial 2 onset at 1580214561.909112
+sequence 10 trial 2 saccade onset at 1580214561.909213
+sequence 10 trial 2 offset at 1580214563.091451
 sequence 10 - 0 missed sync on 144 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 10 stopped at 1580204372.932880
-sequence 11 started at 1580204372.932915
-sequence 11 trial 1 onset at 1580204372.948313
-sequence 11 trial 1 saccade onset at 1580204372.948431
-sequence 11 trial 1 offset at 1580204374.130722
-sequence 11 trial 2 onset at 1580204374.148263
-sequence 11 trial 2 saccade onset at 1580204374.148354
-sequence 11 trial 2 offset at 1580204375.330574
+sequence 10 stopped at 1580214563.092021
+sequence 11 started at 1580214563.092056
+sequence 11 trial 1 onset at 1580214563.108794
+sequence 11 trial 1 saccade onset at 1580214563.108898
+sequence 11 trial 1 offset at 1580214564.291501
+sequence 11 trial 2 onset at 1580214564.309044
+sequence 11 trial 2 saccade onset at 1580214564.309129
+sequence 11 trial 2 offset at 1580214565.491386
 sequence 11 - 0 missed sync on 144 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 11 stopped at 1580204375.331120
-sequence 12 started at 1580204375.331167
-sequence 12 trial 1 onset at 1580204375.348241
-sequence 12 trial 1 saccade onset at 1580204375.348338
-sequence 12 trial 1 offset at 1580204376.530577
-sequence 12 trial 2 onset at 1580204376.548194
-sequence 12 trial 2 saccade onset at 1580204376.548284
-sequence 12 trial 2 offset at 1580204377.730541
+sequence 11 stopped at 1580214565.491951
+sequence 12 started at 1580214565.491986
+sequence 12 trial 1 onset at 1580214565.509027
+sequence 12 trial 1 saccade onset at 1580214565.509138
+sequence 12 trial 1 offset at 1580214566.691378
+sequence 12 trial 2 onset at 1580214566.709002
+sequence 12 trial 2 saccade onset at 1580214566.709104
+sequence 12 trial 2 offset at 1580214567.891340
 sequence 12 - 0 missed sync on 144 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 12 stopped at 1580204377.731060
-sequence 13 started at 1580204377.731108
-sequence 13 trial 1 onset at 1580204377.748165
-sequence 13 trial 1 saccade onset at 1580204377.748258
-sequence 13 trial 1 offset at 1580204378.930508
-sequence 13 trial 2 onset at 1580204378.948125
-sequence 13 trial 2 saccade onset at 1580204378.948228
-sequence 13 trial 2 offset at 1580204380.130667
+sequence 12 stopped at 1580214567.891888
+sequence 13 started at 1580214567.891920
+sequence 13 trial 1 onset at 1580214567.908964
+sequence 13 trial 1 saccade onset at 1580214567.909061
+sequence 13 trial 1 offset at 1580214569.091272
+sequence 13 trial 2 onset at 1580214569.108926
+sequence 13 trial 2 saccade onset at 1580214569.109022
+sequence 13 trial 2 offset at 1580214570.291278
 sequence 13 - 0 missed sync on 144 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 13 stopped at 1580204380.131255
-sequence 14 started at 1580204380.131303
-sequence 14 trial 1 onset at 1580204380.148105
-sequence 14 trial 1 offset at 1580204381.330426
+sequence 13 stopped at 1580214570.293577
+sequence 14 started at 1580214570.293939
+sequence 14 trial 1 onset at 1580214570.308894
+sequence 14 trial 1 offset at 1580214571.491249
 sequence 14 - 0 missed sync on 72 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 14 stopped at 1580204381.330952
-sequence 15 started at 1580204381.331000
-sequence 15 trial 1 onset at 1580204381.348077
-sequence 15 trial 1 offset at 1580204382.530382
+sequence 14 stopped at 1580214571.491816
+sequence 15 started at 1580214571.491850
+sequence 15 trial 1 onset at 1580214571.508206
+sequence 15 trial 1 offset at 1580214572.691181
 sequence 15 - 0 missed sync on 72 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 15 stopped at 1580204382.530894
-sequence 16 started at 1580204382.530927
-sequence 16 trial 1 onset at 1580204382.548057
-sequence 16 trial 1 pursuit onset at 1580204382.548154
-sequence 16 trial 1 pursuit offset at 1580204383.530340
-sequence 16 trial 1 offset at 1580204383.730336
-sequence 16 trial 2 onset at 1580204383.748000
-sequence 16 trial 2 pursuit onset at 1580204383.748094
-sequence 16 trial 2 pursuit offset at 1580204384.730317
-sequence 16 trial 2 offset at 1580204384.930329
+sequence 15 stopped at 1580214572.691739
+sequence 16 started at 1580214572.691773
+sequence 16 trial 1 onset at 1580214572.708828
+sequence 16 trial 1 pursuit onset at 1580214572.708920
+sequence 16 trial 1 pursuit offset at 1580214573.691180
+sequence 16 trial 1 offset at 1580214573.891156
+sequence 16 trial 2 onset at 1580214573.908790
+sequence 16 trial 2 pursuit onset at 1580214573.908894
+sequence 16 trial 2 pursuit offset at 1580214574.891159
+sequence 16 trial 2 offset at 1580214575.091147
 sequence 16 - 0 missed sync on 144 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 16 stopped at 1580204384.930825
-sequence 17 started at 1580204384.930859
-sequence 17 trial 1 onset at 1580204384.947963
-sequence 17 trial 1 offset at 1580204386.130432
+sequence 16 stopped at 1580214575.091717
+sequence 17 started at 1580214575.091751
+sequence 17 trial 1 onset at 1580214575.108775
+sequence 17 trial 1 offset at 1580214576.291080
 sequence 17 - 0 missed sync on 72 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 17 stopped at 1580204386.131007
-sequence 18 started at 1580204386.131056
-sequence 18 trial 1 onset at 1580204386.147930
-sequence 18 trial 1 pursuit onset at 1580204386.148032
-sequence 18 trial 1 pursuit offset at 1580204387.130461
-sequence 18 trial 1 offset at 1580204387.330320
-sequence 18 trial 2 onset at 1580204387.347900
-sequence 18 trial 2 pursuit onset at 1580204387.348006
-sequence 18 trial 2 pursuit offset at 1580204388.330263
-sequence 18 trial 2 offset at 1580204388.530218
+sequence 17 stopped at 1580214576.291644
+sequence 18 started at 1580214576.291677
+sequence 18 trial 1 onset at 1580214576.308731
+sequence 18 trial 1 pursuit onset at 1580214576.308824
+sequence 18 trial 1 pursuit offset at 1580214577.291060
+sequence 18 trial 1 offset at 1580214577.491048
+sequence 18 trial 2 onset at 1580214577.508689
+sequence 18 trial 2 pursuit onset at 1580214577.508773
+sequence 18 trial 2 pursuit offset at 1580214578.491023
+sequence 18 trial 2 offset at 1580214578.691018
 sequence 18 - 0 missed sync on 144 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 18 stopped at 1580204388.530716
-sequence 19 started at 1580204388.530750
-sequence 19 trial 1 onset at 1580204388.547867
-sequence 19 trial 1 offset at 1580204389.730174
+sequence 18 stopped at 1580214578.691528
+sequence 19 started at 1580214578.691561
+sequence 19 trial 1 onset at 1580214578.708674
+sequence 19 trial 1 offset at 1580214579.890986
 sequence 19 - 0 missed sync on 72 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 19 stopped at 1580204389.730678
-sequence 20 started at 1580204389.730712
-sequence 20 trial 1 onset at 1580204389.747837
-sequence 20 trial 1 pursuit onset at 1580204389.747932
-sequence 20 trial 1 pursuit offset at 1580204390.730152
-sequence 20 trial 1 offset at 1580204390.930153
-sequence 20 trial 2 onset at 1580204390.947791
-sequence 20 trial 2 pursuit onset at 1580204390.947895
-sequence 20 trial 2 pursuit offset at 1580204391.930162
-sequence 20 trial 2 offset at 1580204392.130249
+sequence 19 stopped at 1580214579.891526
+sequence 20 started at 1580214579.891559
+sequence 20 trial 1 onset at 1580214579.908504
+sequence 20 trial 1 pursuit onset at 1580214579.908616
+sequence 20 trial 1 pursuit offset at 1580214580.890939
+sequence 20 trial 1 offset at 1580214581.090941
+sequence 20 trial 2 onset at 1580214581.108596
+sequence 20 trial 2 pursuit onset at 1580214581.108698
+sequence 20 trial 2 pursuit offset at 1580214582.090932
+sequence 20 trial 2 offset at 1580214582.290930
 sequence 20 - 0 missed sync on 144 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 20 stopped at 1580204392.130838
-sequence 21 started at 1580204392.130873
-sequence 21 trial 1 onset at 1580204392.147815
-sequence 21 trial 1 offset at 1580204393.330075
+sequence 20 stopped at 1580214582.291445
+sequence 21 started at 1580214582.291511
+sequence 21 trial 1 onset at 1580214582.307943
+sequence 21 trial 1 offset at 1580214583.490886
 sequence 21 - 0 missed sync on 72 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 21 stopped at 1580204393.330607
-sequence 22 started at 1580204393.330656
-sequence 22 trial 1 onset at 1580204393.347135
-sequence 22 trial 1 pursuit onset at 1580204393.347242
-sequence 22 trial 1 pursuit offset at 1580204394.330081
-sequence 22 trial 1 offset at 1580204394.530041
-sequence 22 trial 2 onset at 1580204394.547689
-sequence 22 trial 2 pursuit onset at 1580204394.547778
-sequence 22 trial 2 pursuit offset at 1580204395.530038
-sequence 22 trial 2 offset at 1580204395.730031
+sequence 21 stopped at 1580214583.491443
+sequence 22 started at 1580214583.491475
+sequence 22 trial 1 onset at 1580214583.508591
+sequence 22 trial 1 pursuit onset at 1580214583.508715
+sequence 22 trial 1 pursuit offset at 1580214584.490868
+sequence 22 trial 1 offset at 1580214584.690852
+sequence 22 trial 2 onset at 1580214584.708506
+sequence 22 trial 2 pursuit onset at 1580214584.708596
+sequence 22 trial 2 pursuit offset at 1580214585.690833
+sequence 22 trial 2 offset at 1580214585.890841
 sequence 22 - 0 missed sync on 144 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 22 stopped at 1580204395.730544
-sequence 23 started at 1580204395.730579
-sequence 23 trial 1 onset at 1580204395.747666
-sequence 23 trial 1 offset at 1580204396.930006
+sequence 22 stopped at 1580214585.891390
+sequence 23 started at 1580214585.891422
+sequence 23 trial 1 onset at 1580214585.908474
+sequence 23 trial 1 offset at 1580214587.090832
 sequence 23 - 0 missed sync on 72 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 23 stopped at 1580204396.930536
-sequence 24 started at 1580204396.930584
-sequence 24 trial 1 onset at 1580204396.947629
-sequence 24 trial 1 saccade onset at 1580204396.947738
-sequence 24 trial 1 offset at 1580204398.130069
-sequence 24 trial 2 onset at 1580204398.147609
-sequence 24 trial 2 saccade onset at 1580204398.147721
-sequence 24 trial 2 offset at 1580204399.329911
+sequence 23 stopped at 1580214587.091392
+sequence 24 started at 1580214587.091425
+sequence 24 trial 1 onset at 1580214587.108443
+sequence 24 trial 1 saccade onset at 1580214587.108544
+sequence 24 trial 1 offset at 1580214588.290802
+sequence 24 trial 2 onset at 1580214588.308395
+sequence 24 trial 2 saccade onset at 1580214588.308483
+sequence 24 trial 2 offset at 1580214589.490716
 sequence 24 - 0 missed sync on 144 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 24 stopped at 1580204399.330428
-sequence 25 started at 1580204399.330462
-sequence 25 trial 1 onset at 1580204399.347569
-sequence 25 trial 1 saccade onset at 1580204399.347666
-sequence 25 trial 1 offset at 1580204400.529880
-sequence 25 trial 2 onset at 1580204400.547534
-sequence 25 trial 2 saccade onset at 1580204400.547627
-sequence 25 trial 2 offset at 1580204401.729839
+sequence 24 stopped at 1580214589.491273
+sequence 25 started at 1580214589.491306
+sequence 25 trial 1 onset at 1580214589.508374
+sequence 25 trial 1 saccade onset at 1580214589.508470
+sequence 25 trial 1 offset at 1580214590.690711
+sequence 25 trial 2 onset at 1580214590.708324
+sequence 25 trial 2 saccade onset at 1580214590.708422
+sequence 25 trial 2 offset at 1580214591.890713
 sequence 25 - 0 missed sync on 144 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 25 stopped at 1580204401.730351
-sequence 26 started at 1580204401.730386
-sequence 26 trial 1 onset at 1580204401.747506
-sequence 26 trial 1 saccade onset at 1580204401.747605
-sequence 26 trial 1 offset at 1580204402.929805
-sequence 26 trial 2 onset at 1580204402.947468
-sequence 26 trial 2 saccade onset at 1580204402.947575
-sequence 26 trial 2 offset at 1580204404.130830
+sequence 25 stopped at 1580214591.891273
+sequence 26 started at 1580214591.891305
+sequence 26 trial 1 onset at 1580214591.908307
+sequence 26 trial 1 saccade onset at 1580214591.908419
+sequence 26 trial 1 offset at 1580214593.090655
+sequence 26 trial 2 onset at 1580214593.108308
+sequence 26 trial 2 saccade onset at 1580214593.108416
+sequence 26 trial 2 offset at 1580214594.290581
 sequence 26 - 0 missed sync on 144 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 26 stopped at 1580204404.131522
-sequence 27 started at 1580204404.131559
-sequence 27 trial 1 onset at 1580204404.147479
-sequence 27 trial 1 saccade onset at 1580204404.147605
-sequence 27 trial 1 offset at 1580204405.329774
-sequence 27 trial 2 onset at 1580204405.347397
-sequence 27 trial 2 saccade onset at 1580204405.347507
-sequence 27 trial 2 offset at 1580204406.529694
+sequence 26 stopped at 1580214594.291132
+sequence 27 started at 1580214594.291164
+sequence 27 trial 1 onset at 1580214594.308284
+sequence 27 trial 1 saccade onset at 1580214594.308395
+sequence 27 trial 1 offset at 1580214595.490577
+sequence 27 trial 2 onset at 1580214595.508205
+sequence 27 trial 2 saccade onset at 1580214595.508313
+sequence 27 trial 2 offset at 1580214596.690526
 sequence 27 - 0 missed sync on 144 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 27 stopped at 1580204406.530206
-sequence 28 started at 1580204406.530241
-sequence 28 trial 1 onset at 1580204406.547376
-sequence 28 trial 1 offset at 1580204407.729774
+sequence 27 stopped at 1580214596.691079
+sequence 28 started at 1580214596.691112
+sequence 28 trial 1 onset at 1580214596.708181
+sequence 28 trial 1 offset at 1580214597.890488
 sequence 28 - 0 missed sync on 72 frames, 0.0% (mean/median delay = NaN/NaN ms)
-sequence 28 stopped at 1580204407.730347
+sequence 28 stopped at 1580214597.891043

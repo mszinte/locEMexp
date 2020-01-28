@@ -140,11 +140,12 @@ for t = 1:const.seq_num
                     Screen('FrameOval',scr.main, const.gray, [scr.x_mid - const.eyemov_amp(tAmp),scr.y_mid - const.eyemov_amp(tAmp),scr.x_mid + const.eyemov_amp(tAmp),scr.y_mid + const.eyemov_amp(tAmp)])
                 end
                 % spoke refs
-                for tDir = 1:size(const.eyemov_dir,2)
-                    Screen('DrawLine',scr.main,const.gray,scr.x_mid,scr.y_mid,const.pursuit_matX(end,size(const.eyemov_ampVal,2),tDir),const.pursuit_matY(end,size(const.eyemov_ampVal,2),tDir));
-                end
-                text = sprintf('%s, direction: %s',expDes.txt_var1{var1(seq_trial)},expDes.txt_var3{var3(seq_trial)});
-                Screen('DrawText',scr.main,text,scr.x_mid-10,scr.y_mid-100,const.gray);
+%                 for tDir = 1:size(const.eyemov_dir,2)
+%                     Screen('DrawLine',scr.main,const.gray,scr.x_mid,scr.y_mid,const.pursuit_matX(end,size(const.eyemov_ampVal,2),tDir),const.pursuit_matY(end,size(const.eyemov_ampVal,2),tDir));
+%                 end
+                Screen('DrawLine',scr.main,const.gray,scr.x_mid*.45,scr.y_mid,scr.x_mid*1.55,scr.y_mid);
+                text = sprintf('trial %d: %s, direction: %s',t,expDes.txt_var1{var1(seq_trial)},expDes.txt_var3{var3(seq_trial)});
+                Screen('DrawText',scr.main,text,scr.x_mid-50,scr.y_mid-150,const.gray);
             end
             
             % Draw target
