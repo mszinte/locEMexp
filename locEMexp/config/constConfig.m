@@ -41,8 +41,8 @@ const.fix_rad           =   vaDeg2pix(const.fix_radVal,scr);                    
 %% Time parameters
 const.TR_dur            =   1.2;                                                                % repetition time
 const.TR_num            =   (round(const.TR_dur/scr.frame_duration));                           % repetition time in screen frames
-const.eyemov_seq        =   [1,2,1,3,1,2,1,3,1,2,1,3,1,2,1,3,1, ...
-                               2,1,3,1,2,1,3,1,2,1,3,1,2,1,3,1];                                % 1 = blank, 2 = pursuit, 3 = saccade
+const.eyemov_seq        =   [1,2,1,2,1,2,1,2,1,3,3,3,3,1, ...                                   % 1 = blank, 2 = pursuit, 3 = saccade
+                             1,2,1,2,1,2,1,2,1,3,3,3,3,1];                                      % - the number of 2's and 3's must be a multiple of length of const.eyemov_ampVal
 const.seq_num           =   numel(const.eyemov_seq);                                            % number of sequences per run
 
 const.eyemov_step       =   2;                                                                  % eye movement steps (possible directions)
@@ -71,14 +71,14 @@ const.saccade_tot_num   =   (round(const.saccade_tot_dur/scr.frame_duration));  
 const.saccade_fix_dur   =   0.300;                                                              % eye movement first fixation duration in seconds
 const.saccade_fix_num   =   (round(const.saccade_fix_dur/scr.frame_duration));                  % eye movement first fixation duration in screen frames
 
-const.end_dur           =   0.300;                                                              % return saccade duration in seconds
+const.end_dur           =   0.200;                                                              % return saccade duration in seconds
 const.end_num           =   (round(const.end_dur/scr.frame_duration));                          % return saccade duration in screen frames
 
 const.pursuit_trial_dur =   const.pursuit_tot_dur + const.end_dur;                              % trial duration in seconds
 const.pursuit_trial_num =   (round(const.pursuit_trial_dur/scr.frame_duration));                % trial duration in screen frames
 const.saccade_trial_dur =   const.saccade_fix_dur + const.saccade_tot_dur + const.end_dur;      % trial duration in seconds
 const.saccade_trial_num =   (round(const.saccade_trial_dur/scr.frame_duration));                % trial duration in screen frames
-const.saccade_trial_rep =   floor(const.TR_dur/const.saccade_trial_dur);                        % trial repetitions within a TR : if don't want to repeate, change to 1
+const.saccade_trial_rep =   floor(const.TR_dur/const.saccade_trial_dur);                        % trial repetitions : calculates how many saccades fit within a TR; if don't want to repeate, change to 1
 
 % define TR for scanner
 if const.scanner
@@ -129,8 +129,8 @@ for saccade_amp = 1:size(const.eyemov_amp,2)
             const.saccade_matX(total*(k-1)+step2,saccade_amp,saccade_dir) = scr.x_mid + (cosd(const.eyemov_dir(saccade_dir)) * const.eyemov_amp(saccade_amp));
             const.saccade_matY(total*(k-1)+step2,saccade_amp,saccade_dir) = scr.y_mid + (-sind(const.eyemov_dir(saccade_dir)) * const.eyemov_amp(saccade_amp)); 
             
-            const.saccade_matX(total*(k-1)+step3,saccade_amp,saccade_dir) = scr.x_mid;
-            const.saccade_matY(total*(k-1)+step3,saccade_amp,saccade_dir) = scr.y_mid;
+            const.saccade_matX(total*(k-1)+step3,saccade_amp,saccade_dir) = scr.x_mid;  % change the signal to have a blank screen for return saccade instead of a fixation target
+            const.saccade_matY(total*(k-1)+step3,saccade_amp,saccade_dir) = scr.y_mid;  % change the signal to have a blank screen for return saccade instead of a fixation target
         end
     end
 end

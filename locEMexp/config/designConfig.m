@@ -56,20 +56,16 @@ if const.runNum == 1
     % create sequence order
     amp_sequence.eyemov_val = expDes.twoV(randperm(numel(expDes.twoV)-1));
     
-    eyemov_rep = numel(const.eyemov_seq(const.eyemov_seq ~= 1))/(numel(unique(const.eyemov_seq))-1);
-    ampseq_rep = floor(eyemov_rep / numel(amp_sequence.eyemov_val));
+    amp_sequence.val                        =     nan(size(const.eyemov_seq));
+    amp_sequence.val(const.eyemov_seq==1)   =     numel(expDes.twoV);
     
-    amp_sequence.val =  [];
-    for rep = 1:ampseq_rep
-        for iAmp = 1:numel(amp_sequence.eyemov_val)
-            amp_sequence.val = [amp_sequence.val;
-                                numel(expDes.twoV);amp_sequence.eyemov_val(iAmp);...       % pursuit
-                                numel(expDes.twoV);amp_sequence.eyemov_val(iAmp)];         % saccade
-        end
-    end
-    amp_sequence.val = [amp_sequence.val;numel(expDes.twoV)];
+    ampseq_rep  =    numel(const.eyemov_seq(const.eyemov_seq == 2))/numel(const.eyemov_ampVal);
+    eyemov_rep  =    repmat(amp_sequence.eyemov_val,ampseq_rep,1);
     
-    expDes.amp_sequence = amp_sequence.val;
+    amp_sequence.val(const.eyemov_seq==2)   =     eyemov_rep;
+    amp_sequence.val(const.eyemov_seq==3)   =     eyemov_rep;
+    
+    expDes.amp_sequence   =   amp_sequence.val;
     save(const.amp_sequence_file,'amp_sequence');
 else
     load(const.amp_sequence_file);
