@@ -80,7 +80,7 @@ const.saccade_fix_num   =   (round(const.saccade_fix_dur/scr.frame_duration));  
 const.saccade_end_dur   =   0.500;                                                              % return saccade duration in seconds
 const.saccade_end_num   =   (round(const.saccade_fix_dur/scr.frame_duration));                  % return saccade duration in screen frames
 
-const.pursuit_trial_dur =   const.pursuit_tot_dur + const.pursuit_end_dur;                      % trial duration in seconds
+const.pursuit_trial_dur =   const.pursuit_tot_dur + const.pursuit_ramp_num;                     % trial duration in seconds
 const.pursuit_trial_num =   (round(const.pursuit_trial_dur/scr.frame_duration));                % trial duration in screen frames
 const.saccade_trial_dur =   const.saccade_fix_dur + const.saccade_tot_dur + const.saccade_end_dur; % trial duration in seconds
 const.saccade_trial_num =   (round(const.saccade_trial_dur/scr.frame_duration));                % trial duration in screen frames

@@ -159,7 +159,7 @@ for t = 1:const.seq_num
                 
                 if var1(seq_trial) == 1
                     % pursuit trial
-                    if nbf >= 1 && nbf <= const.pursuit_tot_num
+                    if nbf >= 1 && nbf <= size(const.pursuit_matX,1) %const.pursuit_tot_num
                         % get coordinates
                         targetX = const.pursuit_matX(nbf,var2(seq_trial),var3(seq_trial));
                         targetY = const.pursuit_matY(nbf,var2(seq_trial),var3(seq_trial));
@@ -235,7 +235,7 @@ for t = 1:const.seq_num
             end
             
             if nbf == const.pursuit_tot_num && var1(seq_trial) == 1
-                % pursuit onset
+                % pursuit offset
                 log_txt                 =   sprintf('sequence %i trial %i pursuit offset at %f',t,seq_trial,GetSecs);
                 if const.writeLogTxt
                     fprintf(const.log_file_fid,'%s\n',log_txt);
