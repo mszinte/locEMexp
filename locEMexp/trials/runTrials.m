@@ -143,8 +143,8 @@ for t = 1:const.seq_num
 %                 for tDir = 1:size(const.eyemov_dir,2)
 %                     Screen('DrawLine',scr.main,const.gray,scr.x_mid,scr.y_mid,const.pursuit_matX(end,size(const.eyemov_ampVal,2),tDir),const.pursuit_matY(end,size(const.eyemov_ampVal,2),tDir));
 %                 end
-                Screen('DrawLine',scr.main,const.gray,scr.x_mid*.45,scr.y_mid,scr.x_mid*1.55,scr.y_mid);
-                text = sprintf('trial %d: %s, direction: %s',t,expDes.txt_var1{var1(seq_trial)},expDes.txt_var3{var3(seq_trial)});
+                Screen('DrawLine',scr.main,const.gray,scr.x_mid*.4,scr.y_mid,scr.x_mid*1.55,scr.y_mid);
+                text = sprintf('trial %d: %s, direction: %s, amplitude: %s',t,expDes.txt_var1{var1(seq_trial)},expDes.txt_var3{var3(seq_trial)}, expDes.txt_var2{var2(1)});
                 Screen('DrawText',scr.main,text,scr.x_mid-50,scr.y_mid-150,const.gray);
             end
             

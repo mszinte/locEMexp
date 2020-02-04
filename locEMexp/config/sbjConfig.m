@@ -32,8 +32,8 @@ const.runNum            =   input(sprintf('\n\tRun number (1 to 10): '));
 if isempty(const.runNum)
     error('Incorrect run number');
 end
-if const.runNum > 10
-    error('Cannot run more than 10 runs');
+if const.runNum > 5
+    error('Cannot run more than 5 runs');
 end
 
 if const.expStart == 0
