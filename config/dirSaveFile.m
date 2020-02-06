@@ -20,14 +20,11 @@ function [const]=dirSaveFile(const)
 if ~isdir(sprintf('data/%s/func/',const.sjct))
     mkdir(sprintf('data/%s/func/',const.sjct))
 end
-
-
 if const.cond_run_num(const.runNum) > 9
     const.run_txt   =  sprintf('run%i',const.cond_run_num(const.runNum));
 else
     const.run_txt   =  sprintf('run0%i',const.cond_run_num(const.runNum));
 end
-
 
 % Define directory
 const.dat_output_file   =   sprintf('data/%s/func/%s_task-%s_%s',const.sjct,const.sjct,const.cond1_txt,const.run_txt);

@@ -42,18 +42,17 @@ const.fix_rad           =   vaDeg2pix(const.fix_radVal,scr);                    
 const.TR_dur            =   1.2;                                                                % repetition time
 const.TR_num            =   (round(const.TR_dur/scr.frame_duration));                           % repetition time in screen frames
 
-% TO-DO: decide order of presentation of eye movements
-% const.eyemov_seq        =   [1,2,1,3,1,2,1,3,1,2,1,3,1,2,1,3 ...                                   
-%                              1,2,1,3,1,2,1,3,1,2,1,3,1,2,1,3];
-const.eyemov_seq        =   [1,1,1,1,1,1,1,1, ...
-                             2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1, ...                               % 1 = blank/fixation, 2 = pursuit, 3 = saccade
-                             3,3,3,3,3,3,3,3,1,1,1,1,1,1,1,1, ...                               % - the number of 2's and 3's must be a multiple of the length of const.eyemov_ampVal and const.eyemov_step
-                             3,3,3,3,3,3,3,3,1,1,1,1,1,1,1,1, ...
-                             2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1];                                  
+const.eyemov_seq        =   [1,2,1,3,1,3,1,2,1];                                                % 1 = blank/fixation, 2 = pursuit, 3 = saccade
+% 
+%                             [1,1,1,1,1,1,1,1, ...
+%                              2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1, ...                               
+%                              3,3,3,3,3,3,3,3,1,1,1,1,1,1,1,1, ...                               % - the number of 2's and 3's must be a multiple of the length of const.eyemov_ampVal and const.eyemov_step
+%                              3,3,3,3,3,3,3,3,1,1,1,1,1,1,1,1, ...
+%                              2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1];                                  
 const.seq_num           =   numel(const.eyemov_seq);                                            % number of sequences per run
 
 const.eyemov_step       =   2;                                                                  % eye movement steps (possible directions)
-const.blk_step          =   1;                                                                  % blank period step
+const.fix_step          =   1;                                                                  % blank period step
 const.eyemov_step_dur   =   const.TR_dur;                                                       % eye movement steps in seconds
 const.eyemov_step_num   =   (round(const.eyemov_step_dur/scr.frame_duration));                  % eye movement step duration in screen frames
 const.blk_step_dur      =   const.TR_dur;                                                       % blank step duration in seconds

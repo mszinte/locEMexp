@@ -24,7 +24,7 @@ if ismac && const.tracker
 else
     [~,~] = system('echo invibe | sudo -S networksetup -switchtolocation "Web"');
 end
-pause(2);
+pause(5);
 
 % File director
 % -------------

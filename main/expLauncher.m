@@ -1,8 +1,8 @@
 %% General experiment launcher
 %  =============================
-% By     :  Martin SZINTE & Vanessa C Morita
+% By     :  Vanessa C Morita
 % Projet :  Localisers experiment
-% With   :  Anna MONTAGNINI & Guillaume MASSON
+% With   :  Martin SZINTE & Anna MONTAGNINI & Guillaume MASSON
 % Version:  1.0
 
 % Version description
@@ -11,9 +11,10 @@
 % - saccades vs pursuit vs fixation
 
 
-% - visually guided vs endogenous (saccades, pursuit, fixation)
-% - antisaccade vs saccade (sequences 1 to ?? targets)
-
+% To do
+% -----
+% decide number of runs and change in sbjConfig.m line 35/36
+% decide order of presentation of eye movements
 
 % First settings
 % --------------
