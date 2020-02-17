@@ -24,7 +24,7 @@ Screen('CloseAll');clear all;clear mex;clear functions;close all;home;AssertOpen
 % ----------------
 const.expName           =   'locEMexp';     % experiment name.
 const.expStart          =   0;              % Start of a recording exp                          0 = NO  , 1 = YES
-const.checkTrial        =   0;              % Print trial conditions (for debugging)            0 = NO  , 1 = YES
+const.checkTrial        =   1;              % Print trial conditions (for debugging)            0 = NO  , 1 = YES
 const.writeLogTxt       =   1;              % write a log file in addition to eyelink file      0 = NO  , 1 = YES
 const.mkVideo           =   0;              % Make a video of a run (on mac not linux)          0 = NO  , 1 = YES
 
@@ -37,19 +37,15 @@ const.room              =   2;              % run in MRI or eye-tracking room   
 
 % Run order
 % ---------
-const.cond_run_order = [1;1;...             % run 01 - SaccPursFix_run01      run 02 - SaccPursFix_run02
-                        1;1;...             % run 03 - SaccPursFix_run03      run 04 - SaccPursFix_run04
-                        1;1;...             % run 05 - SaccPursFix_run05      run 06 - SaccPursFix_run06
-                        1;1;...             % run 07 - SaccPursFix_run07      run 08 - SaccPursFix_run08
-                        1;1];               % run 09 - SaccPursFix_run09      run 10 - SaccPursFix_run10
+const.cond_run_order = [1;...               % run 01 - Sacc_run01      
+                        2;...               % run 02 - Purs_run01      
+                        1;...               % run 03 - Sacc_run02      
+                        2];                 % run 04 - Purs_run02     
 
 % Run number per condition
 % ------------------------
-const.cond_run_num   = [01;02;...
-                        03;04;...
-                        05;06;...
-                        07;08;...
-                        09;10];
+const.cond_run_num   = [01;01;...
+                        02;02];
 
 % Desired screen setting
 % ----------------------

@@ -28,27 +28,43 @@ if const.expStart
     end
 end
 
-const.runNum            =   input(sprintf('\n\tRun number (1 to 10): '));
+const.runNum            =   input(sprintf('\n\tRun number (1 to %d): ',length(const.cond_run_order)));
 if isempty(const.runNum)
     error('Incorrect run number');
 end
-if const.runNum > 10
-    error('Cannot run more than 10 runs');
+if const.runNum > length(const.cond_run_order)
+    error('Cannot run more than %d runs',length(const.cond_run_order));
 end
+
+const.cond1_txt          =  'Loc';
+const.cond2_txt          =  '';
 
 if const.expStart == 0
     const.cond1         =   1;
+    const.cond2         =   input(sprintf('\n\tSaccade (1), Pursuit (2) : '));
+    if const.cond2 == 1, const.cond2_txt =  '_sacc';
+    else const.cond2_txt =  '_purs'; end
 else
-    const.cond1         =   const.cond_run_order(const.runNum,1);
+    const.cond1     =   1;    
+    
+    if mod(const.sjctNum,2) == 1 % if subj number is odd, starts with pursuit
+        const.cond_run_order = circshift(const.cond_run_order,1);
+    end
+    
+    const.cond2     =   const.cond_run_order(const.runNum);
+    if const.cond2 == 1 
+        const.cond2_txt 	=  '_sacc';
+    elseif const.cond2 == 2
+        const.cond2_txt 	=  '_purs';
+    end
 end
-const.cond1_txt          =  'SaccPursFix';
 
-fprintf(1,'\n\tTask: %s\n',const.cond1_txt);
+fprintf(1,'\n\tTask: %s%s\n',const.cond1_txt,const.cond2_txt);
 
 const.recEye        =   1;
 if ~const.expStart
+    const.sjctNum       =   99;
     const.sjct          =   'sub-0X';
-    const.recEye        =   1;
 end
 
 end

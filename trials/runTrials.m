@@ -55,6 +55,7 @@ for t = 1:const.seq_num
     if const.checkTrial && const.expStart == 0
         fprintf(1,'\n\n\t========================  SEQ %3.0f ========================\n',t);
         fprintf(1,'\n\tTask                         =\t%s',expDes.txt_cond1{cond1(1)});
+        fprintf(1,'\n\tEye movement                 =\t%s',expDes.txt_var1{var1(1)});
         fprintf(1,'\n\tEye movement amplitude       =\t%s',expDes.txt_var2{var2(1)});
     end
 
@@ -124,8 +125,16 @@ for t = 1:const.seq_num
             
         end
         
+        if var1(seq_trial) == 1 
+            matX = const.saccade_matX;
+            matY = const.saccade_matY;
+        else
+            matX = const.pursuit_matX;
+            matY = const.pursuit_matY;
+        end
+        
         nbf = 0;
-        while nbf < const.TR_num
+        while nbf < size(matX,1)
 
             % flip count
             nbf = nbf + 1;
@@ -140,10 +149,10 @@ for t = 1:const.seq_num
                     Screen('FrameOval',scr.main, const.gray, [scr.x_mid - const.eyemov_amp(tAmp),scr.y_mid - const.eyemov_amp(tAmp),scr.x_mid + const.eyemov_amp(tAmp),scr.y_mid + const.eyemov_amp(tAmp)])
                 end
                 % spoke refs
-%                 for tDir = 1:size(const.eyemov_dir,2)
-%                     Screen('DrawLine',scr.main,const.gray,scr.x_mid,scr.y_mid,const.pursuit_matX(end,size(const.eyemov_ampVal,2),tDir),const.pursuit_matY(end,size(const.eyemov_ampVal,2),tDir));
-%                 end
-                Screen('DrawLine',scr.main,const.gray,scr.x_mid*.4,scr.y_mid,scr.x_mid*1.55,scr.y_mid);
+                for tDir = 1:size(const.eyemov_dir,2)
+                    Screen('DrawLine',scr.main,const.gray,scr.x_mid,scr.y_mid,const.pursuit_matX(end,size(const.eyemov_ampVal,2),tDir),const.pursuit_matY(end,size(const.eyemov_ampVal,2),tDir));
+                end
+%                 Screen('DrawLine',scr.main,const.gray,scr.x_mid*.4,scr.y_mid,scr.x_mid*1.55,scr.y_mid);
                 text = sprintf('trial %d: %s, direction: %s, amplitude: %s',t,expDes.txt_var1{var1(seq_trial)},expDes.txt_var3{var3(seq_trial)}, expDes.txt_var2{var2(1)});
                 Screen('DrawText',scr.main,text,scr.x_mid-50,scr.y_mid-150,const.gray);
             end
@@ -156,26 +165,9 @@ for t = 1:const.seq_num
                 drawTarget(scr,const,targetX,targetY);
             else
                 % eye movement sequence
-                
-                if var1(seq_trial) == 1
-                    % pursuit trial
-                    if nbf >= 1 && nbf <= size(const.pursuit_matX,1) %const.pursuit_tot_num
-                        % get coordinates
-                        targetX = const.pursuit_matX(nbf,var2(seq_trial),var3(seq_trial));
-                        targetY = const.pursuit_matY(nbf,var2(seq_trial),var3(seq_trial));
-                    end
-                    
-                    drawTarget(scr,const,targetX,targetY);
-                else
-                    % saccade trial
-                    if nbf >= 1 && nbf <= size(const.saccade_matX,1)
-                        % get coordinates
-                        targetX = const.saccade_matX(nbf,var2(seq_trial),var3(seq_trial));
-                        targetY = const.saccade_matY(nbf,var2(seq_trial),var3(seq_trial));
-                    end
-                    
-                    drawTarget(scr,const,targetX,targetY);
-                end
+                targetX = matX(nbf,var2(seq_trial),seq_trial);
+                targetY = matY(nbf,var2(seq_trial),seq_trial);
+                drawTarget(scr,const,targetX,targetY);
             end
 
             % Screen flip
@@ -234,7 +226,7 @@ for t = 1:const.seq_num
                 end
             end
             
-            if nbf == const.pursuit_tot_num && var1(seq_trial) == 1
+            if nbf == const.pursuit_num && var1(seq_trial) == 1
                 % pursuit offset
                 log_txt                 =   sprintf('sequence %i trial %i pursuit offset at %f',t,seq_trial,GetSecs);
                 if const.writeLogTxt

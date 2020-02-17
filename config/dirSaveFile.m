@@ -27,7 +27,7 @@ else
 end
 
 % Define directory
-const.dat_output_file   =   sprintf('data/%s/func/%s_task-%s_%s',const.sjct,const.sjct,const.cond1_txt,const.run_txt);
+const.dat_output_file   =   sprintf('data/%s/func/%s_task-%s%s_%s',const.sjct,const.sjct,const.cond1_txt,const.cond2_txt,const.run_txt);
 
 % Eye data
 const.eyelink_temp_file =   'XX.edf';
@@ -55,13 +55,13 @@ if ~isdir(sprintf('data/%s/add/',const.sjct))
 end
 
 % Define directory
-const.add_output_file   =   sprintf('data/%s/add/%s_task-%s_%s',const.sjct,const.sjct,const.cond1_txt,const.run_txt);
+const.add_output_file   =   sprintf('data/%s/add/%s_task-%s%s_%s',const.sjct,const.sjct,const.cond1_txt,const.cond2_txt,const.run_txt);
 
 % Define .mat saving file
 const.mat_file          =   sprintf('%s_matFile.mat',const.add_output_file);
 
 % Amplitude sequence file
-const.amp_sequence_file    =   sprintf('data/%s/add/%s_amp_sequence.mat',const.sjct,const.sjct);
+const.task_amp_sequence_file    =   sprintf('data/%s/add/%s_task_amp_sequence.mat',const.sjct,const.sjct);
 
 % Log file
 if const.writeLogTxt
@@ -71,11 +71,11 @@ end
 
 % Movie file
 if const.mkVideo
-    if ~isdir(sprintf('others/%s_vid/',const.cond1_txt))
-        mkdir(sprintf('others/%s_vid/',const.cond1_txt))
+    if ~isdir(sprintf('others/%s%s_vid/',const.cond1_txt,const.cond2_txt))
+        mkdir(sprintf('others/%s%s_vid/',const.cond1_txt,const.cond2_txt))
     end
-    const.movie_image_file  =   sprintf('others/%s_vid/%s_vid',const.cond1_txt,const.cond1_txt);
-    const.movie_file        =   sprintf('others/%s_vid.mp4',const.cond1_txt);
+    const.movie_image_file  =   sprintf('others/%s%s_vid/%s%s_vid',const.cond1_txt,const.cond2_txt,const.cond1_txt,const.cond2_txt);
+    const.movie_file        =   sprintf('others/%s%s_vid.mp4',const.cond1_txt,const.cond2_txt);
 end
 
 end

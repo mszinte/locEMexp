@@ -18,19 +18,19 @@ function [expDes]=designConfig(const)
 
 %% Experimental random variables
 
-% Cond 1 : task (1 modality)
+% Cond 1 : task 
 % =======
-expDes.oneC             =   1;
-expDes.txt_cond1        =   {'eyemov'};
-% 01 = eye movement
+expDes.oneC             =   [1];
+expDes.txt_cond1        =   {'Loc'};
 
 
-% Var 1 : trial types (3 modalities)
+
+% Var 1 : trial types (2 modalities)
 % ======
 expDes.oneV             =   [1;2;3];
-expDes.txt_var1         =   {'pursuit','saccade','fixation'};
-% 01 = smooth pursuit
-% 02 = saccade
+expDes.txt_var1         =   {'sacc','purs','fix'};
+% 01 = saccade
+% 02 = pursuit
 % 03 = fixation
 
 % Var 2 : eye movement amplitude (5 modalities)
@@ -43,12 +43,34 @@ expDes.txt_var2         =   {'2.5 dva','5 dva','7.5 dva','10 dva','none'};
 % 04 = 10 dva
 % 05 = none
 
-% Var 3 : eye movement direction (3 modalities)
+% Var 3 : eye movement direction (33 modalities)
 % ======
-expDes.threeV           =   [01;02;03];
-expDes.txt_var3         =   {'0 deg','180 deg','none'};
-% 01 =   0.0 deg    
-% 02 = 180.0 deg
+expDes.threeV           =   [01;17;02;18;03;19;04;20;...
+                             05;21;06;22;07;23;08;24;...
+                             09;25;10;26;11;27;12;28;...
+                             13;29;14;30;15;31;16;32;33];
+expDes.txt_var3=   {'0 deg',  '22.5 deg',  '45 deg', '67.5 deg', '90 deg','112.5 deg', '135 deg','157.5 deg',...
+                    '180 deg','202.5 deg','225 deg','247.5 deg','270 deg','292.5 deg', '315 deg','337.5 deg',...
+                    '180 deg','202.5 deg','225 deg','247.5 deg','270 deg','292.5 deg', '315 deg','337.5 deg',...
+                    '0 deg',  '22.5 deg',  '45 deg', '67.5 deg', '90 deg','112.5 deg', '135 deg','157.5 deg',...
+                    'none'};
+% 01 =   0.0 deg    02 = 180.0 deg
+% 03 =  22.5 deg    04 = 202.5 deg
+% 05 =  45.0 deg    06 = 225.0 deg
+% 07 =  67.5 deg    08 = 247.5 deg
+% 09 =  90.0 deg    10 = 270.0 deg
+% 11 = 112.5 deg    12 = 292.5 deg
+% 13 = 135.0 deg    14 = 315.0 deg
+% 15 = 157.5 deg    16 = 337.5 deg
+% 17 = 180.0 deg    18 =   0.0 deg
+% 19 = 202.5 deg    20 =  22.5 deg
+% 21 = 225.0 deg    22 =  45.0 deg
+% 23 = 247.5 deg    24 =  67.5 deg
+% 25 = 270.0 deg    26 =  90.0 deg
+% 27 = 292.5 deg    28 = 112.5 deg
+% 29 = 315.0 deg    30 = 135.0 deg
+% 31 = 337.5 deg    32 = 157.5 deg
+% 33 = none
 
 % seq order
 % ---------
@@ -57,19 +79,23 @@ if const.runNum == 1
     amp_sequence.eyemov_val = expDes.twoV(randperm(numel(expDes.twoV)-1));
     
     amp_sequence.val                        =     nan(size(const.eyemov_seq));
-    amp_sequence.val(const.eyemov_seq==1)   =     numel(expDes.twoV);
-    
-    ampseq_rep  =    numel(const.eyemov_seq(const.eyemov_seq == 2))/numel(const.eyemov_ampVal);
-    eyemov_rep  =    repmat(amp_sequence.eyemov_val,ampseq_rep,1);
-    
-    amp_sequence.val(const.eyemov_seq==2)   =     eyemov_rep;
-    amp_sequence.val(const.eyemov_seq==3)   =     eyemov_rep;
+    amp_sequence.val(const.eyemov_seq==1)   =     numel(expDes.twoV);    
+    amp_sequence.val(const.eyemov_seq==2)   =     amp_sequence.eyemov_val;
     
     expDes.amp_sequence   =   amp_sequence.val;
-    save(const.amp_sequence_file,'amp_sequence');
+    
+    first_task     = const.cond2;
+    txt_first_task = expDes.txt_var1{first_task};
+ 
+    expDes.first_task     = first_task;
+    expDes.txt_first_task = txt_first_task;
+    
+    save(const.task_amp_sequence_file, 'amp_sequence', 'first_task', 'txt_first_task');
 else
-    load(const.amp_sequence_file);
+    load(const.task_amp_sequence_file);
     expDes.amp_sequence   =   amp_sequence.val;
+    expDes.first_task     =   first_task;
+    expDes.txt_first_task =   txt_first_task;
 end
 %% Experimental configuration :
 expDes.nb_cond          =   1;
@@ -88,7 +114,7 @@ for t_seq = 1:size(const.eyemov_seq,2)
     rand_var2 =   expDes.amp_sequence(t_seq);
     
     if rand_var2 == 5
-        seq_steps = const.blk_step;
+        seq_steps = const.fix_step;
     else
         seq_steps = const.eyemov_step;
     end
@@ -98,11 +124,7 @@ for t_seq = 1:size(const.eyemov_seq,2)
             rand_var1 = expDes.oneV(end);
             rand_var3 = expDes.threeV(end);
         else
-            if const.eyemov_seq(t_seq) == 2
-                rand_var1 = 1;
-            elseif const.eyemov_seq(t_seq) == 3
-                rand_var1 = 2;
-            end
+            rand_var1 = expDes.oneV(const.cond2);
             rand_var3 = expDes.threeV(seq_step);
         end
     
