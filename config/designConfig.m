@@ -125,7 +125,17 @@ for t_seq = 1:size(const.eyemov_seq,2)
             rand_var3 = expDes.threeV(end);
         else
             rand_var1 = expDes.oneV(const.cond2);
-            rand_var3 = expDes.threeV(seq_step);
+            if const.saccades_num == 2 && const.cond2 == 1
+                treeV_tmp = expDes.threeV(1:2:31);
+                if seq_step > 16
+                    idx = mod(seq_step,17)+1;
+                else
+                    idx = seq_step;
+                end
+                rand_var3 = treeV_tmp(idx);
+            else
+                rand_var3 = expDes.threeV(seq_step);
+            end
         end
     
         t_trial     =   t_trial + 1;

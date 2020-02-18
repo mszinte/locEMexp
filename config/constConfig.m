@@ -69,7 +69,7 @@ const.pursuit_end_num   =   (round(const.pursuit_end_dur/scr.frame_duration));  
 
 const.saccade_fix_dur   =   0.100;                                                              % first fixation duration in seconds
 const.saccade_fix_num   =   (round(const.saccade_fix_dur/scr.frame_duration));                  % first fixation duration in screen frames
-const.saccades_num      =   2;                                                                  % number of saccades per TR
+const.saccades_num      =   1;                                                                  % number of saccades per TR
 if const.saccades_num == 1
     const.saccade_tot_dur   =   1.100;                                                          % eye movement total duration in seconds
 elseif const.saccades_num == 2

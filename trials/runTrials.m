@@ -149,11 +149,11 @@ for t = 1:const.seq_num
                     Screen('FrameOval',scr.main, const.gray, [scr.x_mid - const.eyemov_amp(tAmp),scr.y_mid - const.eyemov_amp(tAmp),scr.x_mid + const.eyemov_amp(tAmp),scr.y_mid + const.eyemov_amp(tAmp)])
                 end
                 % spoke refs
-                for tDir = 1:size(const.eyemov_dir,2)
+                for tDir = 1:const.eyemov_step
                     Screen('DrawLine',scr.main,const.gray,scr.x_mid,scr.y_mid,const.pursuit_matX(end,size(const.eyemov_ampVal,2),tDir),const.pursuit_matY(end,size(const.eyemov_ampVal,2),tDir));
                 end
 %                 Screen('DrawLine',scr.main,const.gray,scr.x_mid*.4,scr.y_mid,scr.x_mid*1.55,scr.y_mid);
-                text = sprintf('trial %d: %s, direction: %s, amplitude: %s',t,expDes.txt_var1{var1(seq_trial)},expDes.txt_var3{var3(seq_trial)}, expDes.txt_var2{var2(1)});
+                text = sprintf('trial %d: %s, direction: %s, amplitude: %s',t,expDes.txt_var1{var1(seq_trial)},expDes.txt_var3{seq_trial}, expDes.txt_var2{var2(1)});
                 Screen('DrawText',scr.main,text,scr.x_mid-50,scr.y_mid-150,const.gray);
             end
             
@@ -215,8 +215,41 @@ for t = 1:const.seq_num
                 expDes.expMat(trials_idx(seq_trial),10)  =   GetSecs;
             end
             
-            if nbf == 1 && var1(seq_trial) == 1
-                % trial onset
+            if nbf == const.saccade_fix_num+1 && var1(seq_trial) == 1
+                % saccade onset
+                log_txt                 =   sprintf('sequence %i trial %i saccade onset at %f',t,seq_trial,GetSecs);
+                if const.writeLogTxt
+                    fprintf(const.log_file_fid,'%s\n',log_txt);
+                end
+                if const.tracker
+                    Eyelink('message','%s',log_txt);
+                end
+            end
+            
+            if nbf == (const.saccade_fix_num*2+const.saccade_tot_num+1) && var1(seq_trial) == 1 && const.saccades_num == 2
+                % 2nd saccade onset
+                log_txt                 =   sprintf('sequence %i trial %i 2nd saccade onset at %f',t,seq_trial,GetSecs);
+                if const.writeLogTxt
+                    fprintf(const.log_file_fid,'%s\n',log_txt);
+                end
+                if const.tracker
+                    Eyelink('message','%s',log_txt);
+                end
+            end
+            
+            if nbf == (const.saccade_fix_num+const.saccade_tot_num+1) && var1(seq_trial) == 1 && const.saccades_num == 2
+                % 2nd saccade trial onset
+                log_txt                 =   sprintf('sequence %i trial %i 2nd onset at %f',t,seq_trial,GetSecs);
+                if const.writeLogTxt
+                    fprintf(const.log_file_fid,'%s\n',log_txt);
+                end
+                if const.tracker
+                    Eyelink('message','%s',log_txt);
+                end
+            end
+            
+            if nbf == 1 && var1(seq_trial) == 2
+                % pursuit trial onset
                 log_txt                 =   sprintf('sequence %i trial %i pursuit onset at %f',t,seq_trial,GetSecs);
                 if const.writeLogTxt
                     fprintf(const.log_file_fid,'%s\n',log_txt);
@@ -226,7 +259,7 @@ for t = 1:const.seq_num
                 end
             end
             
-            if nbf == const.pursuit_num && var1(seq_trial) == 1
+            if nbf == (const.pursuit_fix_num+const.pursuit_num) && var1(seq_trial) == 2
                 % pursuit offset
                 log_txt                 =   sprintf('sequence %i trial %i pursuit offset at %f',t,seq_trial,GetSecs);
                 if const.writeLogTxt
@@ -237,16 +270,7 @@ for t = 1:const.seq_num
                 end
             end
             
-            if nbf == 1 && var1(seq_trial) == 2
-                % trial onset
-                log_txt                 =   sprintf('sequence %i trial %i saccade onset at %f',t,seq_trial,GetSecs);
-                if const.writeLogTxt
-                    fprintf(const.log_file_fid,'%s\n',log_txt);
-                end
-                if const.tracker
-                    Eyelink('message','%s',log_txt);
-                end
-            end
+            
 
             % Check keyboard
             % --------------
