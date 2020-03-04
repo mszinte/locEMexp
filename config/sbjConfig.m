@@ -42,8 +42,8 @@ const.cond2_txt          =  '';
 if const.expStart == 0
     const.cond1         =   1;
     const.cond2         =   input(sprintf('\n\tSaccade (1), Pursuit (2) : '));
-    if const.cond2 == 1, const.cond2_txt =  '_sacc';
-    else const.cond2_txt =  '_purs'; end
+    if const.cond2 == 1, const.cond2_txt =  'Sacc';
+    else const.cond2_txt =  'Purs'; end
 else
     const.cond1     =   1;    
     
@@ -53,9 +53,9 @@ else
     
     const.cond2     =   const.cond_run_order(const.runNum);
     if const.cond2 == 1 
-        const.cond2_txt 	=  '_sacc';
+        const.cond2_txt 	=  'Sacc';
     elseif const.cond2 == 2
-        const.cond2_txt 	=  '_purs';
+        const.cond2_txt 	=  'Purs';
     end
 end
 
