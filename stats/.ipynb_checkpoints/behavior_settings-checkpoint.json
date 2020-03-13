@@ -1,0 +1,16 @@
+{
+    "edf2asc_dir_mac":"/Applications/Eyelink/EDF_Access_API/Example",
+    "edf2asc_dir_win":"/Applications/Eyelink/EDF_Access_API/Example",
+    "main_dir_mac":"/Users/martin/Dropbox/Experiments/pMFexp",
+    "main_dir_pc":"C:/Users/invibe/Experiments/pMFexp/",
+    "num_run": 5,
+    "num_seq": 9,
+    "seq_trs": 32,
+    "eye_mov_seq":[1,3,5,7],
+    "rads":[0,2.5,5,7.5,10],
+    "sampling_rate":1000,
+    "velocity_th":1.5,
+    "min_dur": 20,
+    "merge_interval": 20,
+    "tolerance_ratio": 0.5
+}
