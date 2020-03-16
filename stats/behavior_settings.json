@@ -1,11 +1,10 @@
 {
     "edf2asc_dir_mac":"/Applications/Eyelink/EDF_Access_API/Example",
     "edf2asc_dir_win":"/Applications/Eyelink/EDF_Access_API/Example",
-    "edf2asc_dir_unix":"/home/moritav/repos/INVIBE/functions",
     "main_dir_mac":"/Users/martin/Dropbox/Experiments/pMFexp",
     "main_dir_pc":"C:/Users/invibe/Experiments/pMFexp/",
     "main_dir_unix":"/home/moritav/repos/INVIBE/locEMexp",
-    "num_run": 4,
+    "num_run": 2,
     "num_seq": 9,
     "seq_trs": 32,
     "seq_type":[0,1,0,1,0,1,0,1,0],

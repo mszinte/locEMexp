@@ -28,6 +28,7 @@ warnings.filterwarnings("ignore")
 import os
 import sys
 import platform
+import re
 import numpy as np
 import ipdb
 import json
@@ -52,26 +53,20 @@ if platform.system() == 'Darwin':
 	main_dir = analysis_info['main_dir_mac']
 	edf2asc_dir = analysis_info['edf2asc_dir_mac']
 	end_file = ''
-    
+
 elif platform.system() == 'Windows':
 	main_dir = analysis_info['main_dir_pc']
 	edf2asc_dir = analysis_info['edf2asc_dir_win']
 	end_file ='.exe'
-    
+
+elif platform.system() == 'Linux':
+    main_dir = analysis_info['main_dir_unix']
 
 # Define file list
 # ----------------
 file_dir = '{exp_dir}/data/{sub}'.format(exp_dir = main_dir, sub = subject)
 list_filename = ['{sub}_task-{task}_run-01'.format(sub = subject, task = task),
-				 '{sub}_task-{task}_run-02'.format(sub = subject, task = task),
-				 '{sub}_task-{task}_run-03'.format(sub = subject, task = task),
-				 '{sub}_task-{task}_run-04'.format(sub = subject, task = task),
-				 '{sub}_task-{task}_run-05'.format(sub = subject, task = task),
-				 '{sub}_task-{task}_run-06'.format(sub = subject, task = task),
-				 '{sub}_task-{task}_run-07'.format(sub = subject, task = task),
-			 	 '{sub}_task-{task}_run-08'.format(sub = subject, task = task),
-				 '{sub}_task-{task}_run-09'.format(sub = subject, task = task),
-				 '{sub}_task-{task}_run-10'.format(sub = subject, task = task)]
+				 '{sub}_task-{task}_run-02'.format(sub = subject, task = task),]
 
 
 # Define experiments details
@@ -97,67 +92,78 @@ time_start_trial = np.zeros((seq_trs,num_seq,num_run))
 time_end_trial = np.zeros((seq_trs,num_seq,num_run))
 for t_run in np.arange(0,num_run,1):
 
-	edf_filename = '{file_dir}/func/{filename}_eyeData'.format(file_dir = file_dir,filename = list_filename[t_run]);
-	mat_filename = '{file_dir}/add/{filename}_matFile.mat'.format(file_dir = file_dir,filename = list_filename[t_run]);
+	edf_filename = '{file_dir}/func/{filename}_eyeData'.format(file_dir = file_dir,filename = list_filename[t_run])
+	mat_filename = '{file_dir}/add/{filename}_matFile.mat'.format(file_dir = file_dir,filename = list_filename[t_run])
 
 	# get .msg and .dat file
-	if not os.path.exists('{}.dat'.format(edf_filename)) or not os.path.exists('{}.msg'.format(edf_filename)):
-		os.system('{edf2asc_dir}/edf2asc{end_file} {edf_filename}.edf -e -y'.format(edf2asc_dir = edf2asc_dir,
-		                                                                            end_file = end_file,
-		                                                                            edf_filename = edf_filename))
+	if not os.path.exists('{}.msg'.format(edf_filename)):
+		if platform.system() == 'Linux':
+			os.system('edf2asc {edf_filename}.edf -e -y'.format(edf_filename = edf_filename))
+		else:
+			os.system('{edf2asc_dir}/edf2asc{end_file} {edf_filename}.edf -e -y'.format(edf2asc_dir = edf2asc_dir,
+																			   end_file = end_file,
+																			   edf_filename = edf_filename))
 		os.rename('{}.asc'.format(edf_filename),'{}.msg'.format(edf_filename))
 
-		os.system('{edf2asc_dir}/edf2asc{end_file} {edf_filename}.edf -s -miss -1.0 -y'.format( edf2asc_dir = edf2asc_dir,
-		                                                                                        end_file = end_file,
-		                                                                                        edf_filename = edf_filename))
+	if not os.path.exists('{}.dat'.format(edf_filename)):
+		if platform.system() == 'Linux':
+			os.system('edf2asc {edf_filename}.edf -s -miss -1.0 -y'.format(edf_filename = edf_filename))
+		else:
+			os.system('{edf2asc_dir}/edf2asc{end_file} {edf_filename}.edf -s -miss -1.0 -y'.format( edf2asc_dir = edf2asc_dir,
+																						  end_file = end_file,
+																						  edf_filename = edf_filename))
 		os.rename('{}.asc'.format(edf_filename),'{}.dat'.format(edf_filename))
 
 	# get first and last time pf each run
-	msgfid = open('{}.msg'.format(edf_filename))    
+	msgfid = open('{}.msg'.format(edf_filename))
 	first_last_time = False
 	first_time = False
-	last_time = False    
+	last_time = False
 	seq_num = 0
 	while not first_last_time:
 		line_read = msgfid.readline()
 		if not line_read == '':
 			la = line_read.split()
 
-		if len(la) > 6:
-			if la[2] == 'sequence' and la[3]=='1' and la[4]=='started' and not first_time: 
+
+		if re.search(r"MSG", line_read):
+			if line_read.find('sequence 1 started') != -1 and not first_time:
 				time_start_eye[0,t_run] = float(la[1])
+				print('first time true')
 				first_time = True
-			    
-			if la[2] == 'sequence' and la[3]=='9' and la[4]=='stopped' and not last_time: 
+
+			if line_read.find('sequence 9 stopped') != -1 and not last_time:
 				time_end_eye[0,t_run] = float(la[1])
+				print('last time true')
 				last_time = True
-			    
-			if la[2] == 'sequence' and la[4]=='started':
+
+			if re.search(r"sequence\s\d+\sstarted", line_read):
 				time_start_seq[seq_num,t_run] = float(la[1])
 				trial_num = 0
-			    
-			if la[2] == 'sequence' and la[4]=='stopped':
+
+			if re.search(r"sequence\s\d+\sstopped", line_read):
 				time_end_seq[seq_num,t_run] = float(la[1])
+				print('seq {} finished'.format(seq_num))
 				seq_num += 1
-			    
-			if la[4] == 'trial' and la[6]=='onset':
+
+			if re.search(r"trial\s\d+\sonset", line_read):
 				time_start_trial[trial_num,seq_num,t_run] = float(la[1])
-			    
-			if la[4] == 'trial' and la[6]=='offset':
+
+			if re.search(r"trial\s\d+\soffset", line_read):
 				time_end_trial[trial_num,seq_num,t_run] = float(la[1])
-				trial_num += 1                    
-    
+				trial_num += 1
+
 		if first_time == True and last_time == True:
 			first_last_time = True
 			msgfid.close();
 
-            
+
 	# load eye coord data
 	eye_dat = np.genfromtxt('{}.dat'.format(edf_filename),usecols=(0, 1, 2))
 	eye_data_run = eye_dat[np.logical_and(eye_dat[:,0]>=time_start_eye[0,t_run],eye_dat[:,0]<=time_end_eye[0,t_run])]
 
 	# add run number
-	eye_data_run = np.concatenate((eye_data_run,np.ones((eye_data_run.shape[0],1))*(t_run)),axis = 1)        
+	eye_data_run = np.concatenate((eye_data_run,np.ones((eye_data_run.shape[0],1))*(t_run)),axis = 1)
 	# col 0 = time
 	# col 2 = eye x coord
 	# col 3 = eye y coord
@@ -176,10 +182,10 @@ for t_run in np.arange(0,num_run,1):
 blinkNum = 0;
 blink_start = False;
 for tTime in np.arange(0,eye_data_runs.shape[0],1):
-	
+
 	if not blink_start:
 		if eye_data_runs[tTime,1] == -1:
-			
+
 			blinkNum += 1
 			timeBlinkOnset = eye_data_runs[tTime,0]
 			blink_start = True
@@ -201,7 +207,7 @@ for tBlink in np.arange(0,blinkNum,1):
 
 	blink_onset_offset[tBlink,0] = blink_onset_offset[tBlink,0]
 	blink_onset_offset[tBlink,1] = blink_onset_offset[tBlink,1]
-	
+
 	eye_data_runs_nan_blink[np.logical_and(eye_data_runs_nan_blink[:,0] >= blink_onset_offset[tBlink,0],eye_data_runs_nan_blink[:,0] <= blink_onset_offset[tBlink,1]),1] = np.nan
 	eye_data_runs_nan_blink[np.logical_and(eye_data_runs_nan_blink[:,0] >= blink_onset_offset[tBlink,0],eye_data_runs_nan_blink[:,0] <= blink_onset_offset[tBlink,1]),2] = np.nan
 

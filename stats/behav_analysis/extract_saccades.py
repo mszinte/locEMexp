@@ -18,7 +18,7 @@ vals_all[:,03]:	saccade number detected (nan if no),
 vals_all[:,04]:	saccade onset x coordinate (dva from screen center)
 vals_all[:,05]:	saccade offset x coordinate (dva from screen center))
 vals_all[:,06]:	saccade onset y coordinate (dva from screen center)
-vals_all[:,07]:	saccade offset y coordinate (dva from screen center)),	
+vals_all[:,07]:	saccade offset y coordinate (dva from screen center)),
 vals_all[:,08]:	saccade onset time trigger
 vals_all[:,09]:	saccade offset time trigger
 vals_all[:,10]:	saccade onset time relative to trial onset (proportion of the trial)
@@ -74,13 +74,16 @@ with open('behavior_settings.json') as f:
 	json_s = f.read()
 	analysis_info = json.loads(json_s)
 
-# Platform settings 
+# Platform settings
 # -----------------
 if platform.system() == 'Darwin':
 	main_dir = analysis_info['main_dir_mac']
-    
+
 elif platform.system() == 'Windows':
 	main_dir = analysis_info['main_dir_pc']
+
+elif platform.system() == 'Linux':
+    main_dir = analysis_info['main_dir_unix']
 
 runs = np.arange(0,analysis_info['num_run'],1)
 sequences = np.arange(0,analysis_info['num_seq'],1)
@@ -95,7 +98,7 @@ seq_type = analysis_info['seq_type']
 # ---------
 file_dir = '{exp_dir}/data/{sub}'.format(exp_dir = main_dir, sub = subject)
 h5_filename = "{file_dir}/add/{sub}_task-{task}_eyedata.h5".format(file_dir = file_dir, sub = subject, task = task)
-h5_file = h5py.File(h5_filename,'r')
+h5_file = h5py.File(h5_filename,'a')
 folder_alias = 'eye_traces'
 eye_data_runs = np.array(h5_file['{folder_alias}/eye_data_runs'.format(folder_alias = folder_alias)])
 eye_data_runs_nan_blink = np.array(h5_file['{folder_alias}/eye_data_runs_nan_blink'.format(folder_alias = folder_alias)])
@@ -131,7 +134,7 @@ for run in runs:
 			# print('trial: {}'.format(trial))
 			trial_data_logic = np.logical_and(eye_data_runs[:,0] >= time_start_trial[trial,sequence,run],\
 											  eye_data_runs[:,0] <= time_end_trial[trial,sequence,run])
-			
+
 			data_logic = np.logical_and.reduce(np.array((run_data_logic,seq_data_logic,trial_data_logic)))
 
 			# fixation target position
@@ -179,7 +182,7 @@ for run in runs:
 			#2 saccade detection
 			if not miss_time:
 				t, p, x, y = eye_data_runs[trial_data_logic,0],time_prct,eye_data_runs[trial_data_logic,1],eye_data_runs[trial_data_logic,2]
-				vx, vy = vecvel(x,y,sampling_rate)                
+				vx, vy = vecvel(x,y,sampling_rate)
 				sac = microsacc_merge(x,y,vx,vy,velocity_th,min_dur,merge_interval)
 				ms = saccpar(sac)
 
@@ -268,7 +271,7 @@ blink_start = False
 for tTime in np.arange(0,eye_data_runs_nan_blink.shape[0],1):
 	if not blink_start:
 		if np.isnan(eye_data_runs_nan_blink[tTime,1]):
-			
+
 			blinkNum += 1
 			timeBlinkOnset = eye_data_runs_nan_blink[tTime,0]
 			blink_start = True
@@ -293,13 +296,13 @@ eye_data_runs_int_blink = np.copy(eye_data_runs_nan_blink)
 for tBlink in np.arange(0,blinkNum,1):
 
 
-	
+
 	blink_pre_sac_logic = np.logical_and(vals_all[:,sac_t_offset_col] >= blink_onset_offset[tBlink,0] - buffer_dur/2,\
 										 vals_all[:,sac_t_offset_col] <= blink_onset_offset[tBlink,0] + buffer_dur/2)
-	
+
 	blink_post_sac_logic = np.logical_and(vals_all[:,sac_t_onset_col] >= blink_onset_offset[tBlink,1] - buffer_dur/2,\
 										  vals_all[:,sac_t_onset_col] <= blink_onset_offset[tBlink,1] + buffer_dur/2)
-	
+
 	vals_all[blink_pre_sac_logic,blink_saccade_col] += 1
 	vals_all[blink_post_sac_logic,blink_saccade_col] += 1
 
@@ -312,7 +315,7 @@ for tBlink in np.arange(0,blinkNum,1):
 		blink_post_sac_vals = vals_all[blink_post_sac_logic]
 		blink_post_sac_t_onset = blink_post_sac_vals[0,sac_t_onset_col]
 		blink_post_sac_t_offset = blink_post_sac_vals[0,sac_t_offset_col]
-		
+
 		blink_sac_x_coord = eye_data_runs_int_blink[np.logical_and(eye_data_runs_int_blink[:,0] >= blink_pre_sac_t_onset,eye_data_runs_int_blink[:,0] <= blink_post_sac_t_offset),1]
 		blink_sac_y_coord = eye_data_runs_int_blink[np.logical_and(eye_data_runs_int_blink[:,0] >= blink_pre_sac_t_onset,eye_data_runs_int_blink[:,0] <= blink_post_sac_t_offset),2]
 
