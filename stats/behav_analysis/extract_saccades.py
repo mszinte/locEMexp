@@ -70,7 +70,7 @@ task = sys.argv[2]
 
 # Define analysis parameters
 # --------------------------
-with open('behavior_settings.json') as f:
+with open('./behavior_settings.json') as f:
 	json_s = f.read()
 	analysis_info = json.loads(json_s)
 
@@ -106,7 +106,7 @@ time_start_seq = np.array(h5_file['{folder_alias}/time_start_seq'.format(folder_
 time_end_seq = np.array(h5_file['{folder_alias}/time_end_seq'.format(folder_alias = folder_alias)])
 time_start_trial = np.array(h5_file['{folder_alias}/time_start_trial'.format(folder_alias = folder_alias)])
 time_end_trial = np.array(h5_file['{folder_alias}/time_end_trial'.format(folder_alias = folder_alias)])
-amp_sequence = np.array(h5_file['{folder_alias}/amp_sequence'.format(folder_alias = folder_alias)])
+amp_sequence = np.array(h5_file['{folder_alias}/amp_sequence'.format(folder_alias = folder_alias)])[0]
 
 # Get saccade model
 # -----------------
@@ -131,14 +131,14 @@ for run in runs:
 
 		trial_with_sac = 0
 		for trial in trials:
-			# print('trial: {}'.format(trial))
+			print('trial: {}'.format(trial))
 			trial_data_logic = np.logical_and(eye_data_runs[:,0] >= time_start_trial[trial,sequence,run],\
 											  eye_data_runs[:,0] <= time_end_trial[trial,sequence,run])
 
 			data_logic = np.logical_and.reduce(np.array((run_data_logic,seq_data_logic,trial_data_logic)))
 
 			# fixation target position
-			if amp_sequence[sequence] == 5:
+			if (amp_sequence[sequence] == 5) :
 				amp_sac = 0
 				fix_pos_x, fix_pos_y = 0,0
 				sac_pos_x,sac_pos_y = 0,0
@@ -222,8 +222,8 @@ for run in runs:
 						fix_cor = isincircle(sac_x_onset,sac_y_onset,fix_pos_x,fix_pos_y,sac_fix_rad)
 						sac_cor = isincircle(sac_x_offset,sac_y_offset,sac_pos_x,sac_pos_y,sac_fix_rad)
 
-						if np.logical_and(fix_cor,sac_cor):sac_accuracy = 1;
-						else:sac_accuracy = 0;
+						if np.logical_and(fix_cor,sac_cor):sac_accuracy = 1
+						else:sac_accuracy = 0
 
 						#3 microsaccade
 						if sac_amp <= 1.0:microsaccade = 1
@@ -288,7 +288,7 @@ for tTime in np.arange(0,eye_data_runs_nan_blink.shape[0],1):
 
 
 # nan saccade time around detected blinks and replace by interpolations
-buffer_dur = 20;
+buffer_dur = 20
 sac_t_onset_col = 8
 sac_t_offset_col = 9
 blink_saccade_col = 25
