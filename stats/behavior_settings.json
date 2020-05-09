@@ -3,7 +3,7 @@
     "edf2asc_dir_win":"/Applications/Eyelink/EDF_Access_API/Example",
     "main_dir_mac":"/Users/martin/Dropbox/Experiments/pMFexp",
     "main_dir_pc":"C:/Users/invibe/Experiments/pMFexp/",
-    "main_dir_unix":"/home/moritav/repos/INVIBE/locEMexp",
+    "main_dir_unix":"/home/mv/Experiments/locEMexp",
     "num_run": 2,
     "num_seq": 9,
     "seq_trs": 32,
