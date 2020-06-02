@@ -62,6 +62,10 @@ if platform.system() == 'Darwin':
     
 elif platform.system() == 'Windows':
 	main_dir = analysis_info['main_dir_pc']
+
+elif platform.system() == 'Linux':
+    main_dir = analysis_info['main_dir_unix']
+	
 runs = np.arange(0,analysis_info['num_run'],1)
 sequences = np.arange(0,analysis_info['num_seq'],1)
 trials_seq = analysis_info['trials_seq']
@@ -109,8 +113,8 @@ for run in runs:
 		else:sequence_txt = '0{}'.format(sequence+1)
 
 		# make figure folder
-		try: os.makedirs('{file_dir}/add/figures/run-{run_txt}/seq-{sequence_txt}/'.format(
-								file_dir = file_dir, run_txt = run_txt, sequence_txt = sequence_txt))
+		try: os.makedirs('{file_dir}/add/figures/{task}/run-{run_txt}/seq-{sequence_txt}/'.format(
+								file_dir = file_dir, task = task, run_txt = run_txt, sequence_txt = sequence_txt))
 		except: pass
 
 		for trial in trials:
@@ -168,7 +172,7 @@ for run in runs:
 						ax2.plot(p_sac,y_sac,color = [0,0,0],linewidth = linewidth_sac)
 						ax3.plot(x_sac,y_sac,color = [0,0,0],linewidth = linewidth_sac)
 
-			plt.savefig("{file_dir}/add/figures/run-{run_txt}/seq-{sequence_txt}/{sub}_task-{task}_run-{run_txt}_seq-{sequence_txt}_trial-{trial_txt}_eyetrace.png".format(
+			plt.savefig("{file_dir}/add/figures/{task}/run-{run_txt}/seq-{sequence_txt}/{sub}_task-{task}_run-{run_txt}_seq-{sequence_txt}_trial-{trial_txt}_eyetrace.png".format(
 														sub = subject,task = task,
 														run_txt = run_txt,
 														sequence_txt = sequence_txt,

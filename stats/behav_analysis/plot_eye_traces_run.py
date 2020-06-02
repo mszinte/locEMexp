@@ -60,6 +60,10 @@ if platform.system() == 'Darwin':
     
 elif platform.system() == 'Windows':
 	main_dir = analysis_info['main_dir_pc']
+
+elif platform.system() == 'Linux':
+    main_dir = analysis_info['main_dir_unix']
+	
 runs = np.arange(0,analysis_info['num_run'],1)
 rads = analysis_info['rads']
 
@@ -83,7 +87,7 @@ for run in runs:
 
 	# Define figure folder
 
-	try: os.makedirs('{file_dir}/add/figures/run-{run_txt}'.format(file_dir = file_dir,run_txt = run_txt))
+	try: os.makedirs('{file_dir}/add/figures/{task}/run-{run_txt}'.format(file_dir = file_dir,task = task,run_txt = run_txt))
 	except: pass
 	ax1,ax2,ax3,_ = draw_bg_trial(analysis_info)
 	
@@ -96,6 +100,6 @@ for run in runs:
 	ax3.plot(eye_data[run_eye_data_logic,1],eye_data[run_eye_data_logic,2],color = [0.5,0.5,0.5],linewidth = axis_width*1.5)
 	ax3.text(8, -10, 'Run {run}'.format(run = run+1), horizontalalignment = 'left', verticalalignment = 'center', fontsize = 14)
 
-	plt.savefig("{file_dir}/add/figures/run-{run_txt}/{sub}_task-{task}_run-{run_txt}_eyetraces.png".format(
+	plt.savefig("{file_dir}/add/figures/{task}/run-{run_txt}/{sub}_task-{task}_run-{run_txt}_eyetraces.png".format(
 															sub = subject,task = task,
 															run_txt = run_txt,file_dir = file_dir),facecolor='w')
