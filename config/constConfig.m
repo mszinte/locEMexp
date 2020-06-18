@@ -176,43 +176,54 @@ elseif const.saccades_num == 1 % 1 TR = 1 saccade
 end
 
 %% Eyelink calibration value
+% Personal calibrations
+rng('default');rng('shuffle');
+angle = 0:pi/3:5/3*pi;
+ 
+% compute calibration target locations
+const.calib_amp_ratio  = 0.5;
+[cx1,cy1] = pol2cart(angle,const.calib_amp_ratio);
+[cx2,cy2] = pol2cart(angle+(pi/6),const.calib_amp_ratio*0.5);
+cx = round(scr.x_mid + scr.x_mid*[0 cx1 cx2]);
+cy = round(scr.y_mid + scr.x_mid*[0 cy1 cy2]);
+ 
+% order for eyelink
+const.calibCoord = round([  cx(1), cy(1),...   % 1.  center center
+                            cx(9), cy(9),...   % 2.  center up
+                            cx(13),cy(13),...  % 3.  center down
+                            cx(5), cy(5),...   % 4.  left center
+                            cx(2), cy(2),...   % 5.  right center
+                            cx(4), cy(4),...   % 6.  left up
+                            cx(3), cy(3),...   % 7.  right up
+                            cx(6), cy(6),...   % 8.  left down
+                            cx(7), cy(7),...   % 9.  right down
+                            cx(10),cy(10),...  % 10. left up
+                            cx(8), cy(8),...   % 11. right up
+                            cx(11),cy(11),...  % 12. left down
+                            cx(12),cy(12)]);    % 13. right down
+      
+% compute validation target locations (calibration targets smaller radius)
+const.valid_amp_ratio = const.calib_amp_ratio*0.8;
+[vx1,vy1] = pol2cart(angle,const.valid_amp_ratio);
+[vx2,vy2] = pol2cart(angle+pi/6,const.valid_amp_ratio*0.5);
+vx = round(scr.x_mid + scr.x_mid*[0 vx1 vx2]);
+vy = round(scr.y_mid + scr.x_mid*[0 vy1 vy2]);
+ 
+% order for eyelink
+const.validCoord =round( [  vx(1), vy(1),...   % 1.  center center
+                             vx(9), vy(9),...   % 2.  center up
+                             vx(13),vy(13),...  % 3.  center down
+                             vx(5), vy(5),...   % 4.  left center
+                             vx(2), vy(2),...   % 5.  right center
+                             vx(4), vy(4),...   % 6.  left up
+                             vx(3), vy(3),...   % 7.  right up
+                             vx(6), vy(6),...   % 8.  left down
+                             vx(7), vy(7),...   % 9.  right down
+                             vx(10),vy(10),...  % 10. left up
+                             vx(8), vy(8),...   % 11. right up
+                             vx(11),vy(11),...  % 12. left down
+                             vx(12),vy(12)]);    % 13. right down
+
 const.ppd               =   vaDeg2pix(1,scr);                                                  % get one pixel per degree
-const.maxX              =   scr.scr_sizeX*0.5;                                                 % maximum horizontal amplitude of the screen
-const.maxY              =   scr.scr_sizeY*0.5;                                                 % maximum vertical amplitude of the screen
-const.calib_maxX     	=   const.maxX/2;
-const.calib_maxY        =   const.maxY/2;
-const.calib_center      =   [scr.scr_sizeX/2,scr.scr_sizeY/2];
-
-const.calibCoord        =   round([ const.calib_center(1),                     const.calib_center(2),...                       % 01.  center center
-                                    const.calib_center(1),                     const.calib_center(2)-const.calib_maxY,...      % 02.  center up
-                                    const.calib_center(1),                     const.calib_center(2)+const.calib_maxY,...      % 03.  center down
-                                    const.calib_center(1)-const.calib_maxX,    const.calib_center(2),....                      % 04.  left center
-                                    const.calib_center(1)+const.calib_maxX,    const.calib_center(2),...                       % 05.  right center
-                                    const.calib_center(1)-const.calib_maxX,    const.calib_center(2)-const.calib_maxY,....     % 06.  left up
-                                    const.calib_center(1)+const.calib_maxX,    const.calib_center(2)-const.calib_maxY,...      % 07.  right up
-                                    const.calib_center(1)-const.calib_maxX,    const.calib_center(2)+const.calib_maxY,....     % 08.  left down
-                                    const.calib_center(1)+const.calib_maxX,    const.calib_center(2)+const.calib_maxY,...      % 09.  right down
-                                    const.calib_center(1)-const.calib_maxX/2,  const.calib_center(2)-const.calib_maxY/2,....   % 10.  mid left mid up
-                                    const.calib_center(1)+const.calib_maxX/2,  const.calib_center(2)-const.calib_maxY/2,....   % 11.  mid right mid up
-                                    const.calib_center(1)-const.calib_maxX/2,  const.calib_center(2)+const.calib_maxY/2,....   % 12.  mid left mid down
-                                    const.calib_center(1)+const.calib_maxX/2,  const.calib_center(2)+const.calib_maxY/2]);     % 13.  mid right mid down
-
-const.valid_maxX        =   const.calib_maxX * 0.9;
-const.valid_maxY        =   const.calib_maxY * 0.9;
-const.valid_center      =   const.calib_center;
-
-const.validCoord    	=   round([ const.valid_center(1),                     const.valid_center(2),...                       % 01.  center center
-                                    const.valid_center(1),                     const.valid_center(2)-const.valid_maxY,...      % 02.  center up
-                                    const.valid_center(1),                     const.valid_center(2)+const.valid_maxY,...      % 03.  center down
-                                    const.valid_center(1)-const.valid_maxX,    const.valid_center(2),....                      % 04.  left center
-                                    const.valid_center(1)+const.valid_maxX,    const.valid_center(2),...                       % 05.  right center
-                                    const.valid_center(1)-const.valid_maxX,    const.valid_center(2)-const.valid_maxY,....     % 06.  left up
-                                    const.valid_center(1)+const.valid_maxX,    const.valid_center(2)-const.valid_maxY,...      % 07.  right up
-                                    const.valid_center(1)-const.valid_maxX,    const.valid_center(2)+const.valid_maxY,....     % 08.  left down
-                                    const.valid_center(1)+const.valid_maxX,    const.valid_center(2)+const.valid_maxY,...      % 09.  right down
-                                    const.valid_center(1)-const.valid_maxX/2,  const.valid_center(2)-const.valid_maxY/2,....   % 10.  mid left mid up
-                                    const.valid_center(1)+const.valid_maxX/2,  const.valid_center(2)-const.valid_maxY/2,....   % 11.  mid right mid up
-                                    const.valid_center(1)-const.valid_maxX/2,  const.valid_center(2)+const.valid_maxY/2,....   % 12.  mid left mid down
-                                    const.valid_center(1)+const.valid_maxX/2,  const.valid_center(2)+const.valid_maxY/2]);     % 13.  mid right mid down
 
 end

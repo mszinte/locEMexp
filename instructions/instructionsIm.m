@@ -66,7 +66,9 @@ while ~push_button
         if keyCode(my_key.space) || keyCode(my_key.right1)
             push_button             =   1;
         elseif keyCode(my_key.escape)
-            overDone(const,my_key)
+            if const.expStart == 0
+                overDone(const,my_key)
+            end
         end
     end
 end

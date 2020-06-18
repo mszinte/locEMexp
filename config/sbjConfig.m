@@ -36,7 +36,7 @@ if const.runNum > length(const.cond_run_order)
     error('Cannot run more than %d runs',length(const.cond_run_order));
 end
 
-const.cond1_txt          =  'Loc';
+const.cond1_txt          =  'SacPurLoc';
 const.cond2_txt          =  '';
 
 if const.expStart == 0
