@@ -60,7 +60,7 @@ if const.room == 1
     daq.reset;
     my_key.ni_devices = daq.getDevices;
     my_key.ni_session = daq.createSession(my_key.ni_devices.Vendor.ID);
-    my_key.ni_device_ID = 'Dev2';
+    my_key.ni_device_ID = 'Dev1';
     my_key.ni_measurement_type = 'InputOnly';
     my_key.button_press_val = 1;
     
