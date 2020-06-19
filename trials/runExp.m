@@ -102,7 +102,7 @@ if const.tracker
     eyeLinkClearScreen(el.bgCol);
     eyeLinkDrawText(scr.x_mid,scr.y_mid,el.txtCol,'TASK INSTRUCTIONS - PRESS SPACE')
 end
-instructionsIm(scr,const,my_key,sprintf('%s%s%s',const.cond1_txt,const.cond2_txt,scanTxt),0);
+instructionsIm(scr,const,my_key,sprintf('%s%s%s',const.cond2_txt,const.cond1_txt,scanTxt),0);
 for keyb = 1:size(my_key.keyboard_idx,2)
     KbQueueFlush(my_key.keyboard_idx(keyb));
 end

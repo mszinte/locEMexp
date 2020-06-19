@@ -36,30 +36,26 @@ if const.runNum > length(const.cond_run_order)
     error('Cannot run more than %d runs',length(const.cond_run_order));
 end
 
-const.cond1_txt          =  'SacPurLoc';
+const.cond1_txt          =  'Loc';
 const.cond2_txt          =  '';
 
 if const.expStart == 0
     const.cond1         =   1;
     const.cond2         =   input(sprintf('\n\tSaccade (1), Pursuit (2) : '));
-    if const.cond2 == 1, const.cond2_txt =  'Sacc';
-    else const.cond2_txt =  'Purs'; end
+    if const.cond2 == 1, const.cond2_txt =  'Sac';
+    else const.cond2_txt =  'Pur'; end
 else
     const.cond1     =   1;    
     
-    if mod(const.sjctNum,2) == 1 % if subj number is odd, starts with pursuit
-        const.cond_run_order = circshift(const.cond_run_order,1);
-    end
-    
     const.cond2     =   const.cond_run_order(const.runNum);
     if const.cond2 == 1 
-        const.cond2_txt 	=  'Sacc';
+        const.cond2_txt 	=  'Sac';
     elseif const.cond2 == 2
-        const.cond2_txt 	=  'Purs';
+        const.cond2_txt 	=  'Pur';
     end
 end
 
-fprintf(1,'\n\tTask: %s%s\n',const.cond1_txt,const.cond2_txt);
+fprintf(1,'\n\tTask: %s%s\n',const.cond2_txt,const.cond1_txt);
 
 const.recEye        =   1;
 if ~const.expStart

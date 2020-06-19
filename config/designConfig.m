@@ -28,7 +28,7 @@ expDes.txt_cond1        =   {'Loc'};
 % Var 1 : trial types (2 modalities)
 % ======
 expDes.oneV             =   [1;2;3];
-expDes.txt_var1         =   {'sacc','purs','fix'};
+expDes.txt_var1         =   {'sac','pur','fix'};
 % 01 = saccade
 % 02 = pursuit
 % 03 = fixation
