@@ -97,7 +97,7 @@ while ~record
 end
 
 % Task instructions 
-fprintf(1,'\n\tTask instructions - press space or 1st-red left button box -');
+fprintf(1,'\n\tTask instructions -press space or left button-');
 if const.tracker
     eyeLinkClearScreen(el.bgCol);
     eyeLinkDrawText(scr.x_mid,scr.y_mid,el.txtCol,'TASK INSTRUCTIONS - PRESS SPACE')
