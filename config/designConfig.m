@@ -23,8 +23,6 @@ function [expDes]=designConfig(const)
 expDes.oneC             =   [1];
 expDes.txt_cond1        =   {'Loc'};
 
-
-
 % Var 1 : trial types (2 modalities)
 % ======
 expDes.oneV             =   [1;2;3];

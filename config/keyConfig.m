@@ -53,14 +53,16 @@ end
 [~,keyCodeMat]   = KbQueueCheck(my_key.keyboard_idx(1));
 my_key.keyCodeNum  = numel(keyCodeMat);
 
-if const.room == 1
+if const.scanner == 1
     
     % NI board acquisition settings
     warning off;
     daq.reset;
     my_key.ni_devices = daq.getDevices;
-    my_key.ni_session = daq.createSession(my_key.ni_devices.Vendor.ID);
-    my_key.ni_device_ID = 'Dev1';
+    my_key.ni_session1 = daq.createSession(my_key.ni_devices(1).Vendor.ID);
+    my_key.ni_session2 = daq.createSession(my_key.ni_devices(2).Vendor.ID);
+    my_key.ni_device_ID1 = 'Dev1';
+    my_key.ni_device_ID2 = 'Dev2';
     my_key.ni_measurement_type = 'InputOnly';
     my_key.button_press_val = 1;
     
@@ -70,30 +72,30 @@ if const.room == 1
     my_key.port_button_left3    = [];                   my_key.idx_button_left3     = [];
     my_key.port_button_left4    = 'port0/line0';        my_key.idx_button_left4     = 1;
     
-    if ~isempty(my_key.port_button_left1); my_key.channel_button_left1 = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_left1,my_key.ni_measurement_type); end
-    if ~isempty(my_key.port_button_left2); my_key.channel_button_left2 = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_left2,my_key.ni_measurement_type); end    
-    if ~isempty(my_key.port_button_left3); my_key.channel_button_left2 = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_left3,my_key.ni_measurement_type); end
-    if ~isempty(my_key.port_button_left4); my_key.channel_button_left4 = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_left4,my_key.ni_measurement_type); end
+    if ~isempty(my_key.port_button_left1); my_key.channel_button_left1 = my_key.ni_session2.addDigitalChannel(my_key.ni_device_ID2,my_key.port_button_left1,my_key.ni_measurement_type); end
+    if ~isempty(my_key.port_button_left2); my_key.channel_button_left2 = my_key.ni_session2.addDigitalChannel(my_key.ni_device_ID2,my_key.port_button_left2,my_key.ni_measurement_type); end    
+    if ~isempty(my_key.port_button_left3); my_key.channel_button_left2 = my_key.ni_session2.addDigitalChannel(my_key.ni_device_ID2,my_key.port_button_left3,my_key.ni_measurement_type); end
+    if ~isempty(my_key.port_button_left4); my_key.channel_button_left4 = my_key.ni_session2.addDigitalChannel(my_key.ni_device_ID2,my_key.port_button_left4,my_key.ni_measurement_type); end
     
     my_key.port_button_right1    = 'port0/line1';       my_key.idx_button_right1     =  2;
     my_key.port_button_right2    = [];                  my_key.idx_button_right2     =  [];
     my_key.port_button_right3    = [];                  my_key.idx_button_right3     =  [];
     my_key.port_button_right4    = [];                  my_key.idx_button_right4     =  [];
     
-    if ~isempty(my_key.port_button_right1); my_key.channel_button_right1 = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_right1,my_key.ni_measurement_type); end
-    if ~isempty(my_key.port_button_right2); my_key.channel_button_right2 = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_right2,my_key.ni_measurement_type); end
-    if ~isempty(my_key.port_button_right3); my_key.channel_button_right3 = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_right3,my_key.ni_measurement_type); end
-    if ~isempty(my_key.port_button_right4); my_key.channel_button_right4 = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_button_right4,my_key.ni_measurement_type); end
+    if ~isempty(my_key.port_button_right1); my_key.channel_button_right1 = my_key.ni_session2.addDigitalChannel(my_key.ni_device_ID2,my_key.port_button_right1,my_key.ni_measurement_type); end
+    if ~isempty(my_key.port_button_right2); my_key.channel_button_right2 = my_key.ni_session2.addDigitalChannel(my_key.ni_device_ID2,my_key.port_button_right2,my_key.ni_measurement_type); end
+    if ~isempty(my_key.port_button_right3); my_key.channel_button_right3 = my_key.ni_session2.addDigitalChannel(my_key.ni_device_ID2,my_key.port_button_right3,my_key.ni_measurement_type); end
+    if ~isempty(my_key.port_button_right4); my_key.channel_button_right4 = my_key.ni_session2.addDigitalChannel(my_key.ni_device_ID2,my_key.port_button_right4,my_key.ni_measurement_type); end
     
     % MRI trigger settings
     fprintf(1,'\n\n\tDon''t forget to put MRI trigger in "Toggle" mode\n');
     my_key.port_mri_bands       = 'port1/line0';
     my_key.idx_mri_bands        = 3;
     
-    if ~isempty(my_key.port_mri_bands); my_key.channel_mri_bands = my_key.ni_session.addDigitalChannel(my_key.ni_device_ID,my_key.port_mri_bands,my_key.ni_measurement_type);  end
+    if ~isempty(my_key.port_mri_bands); my_key.channel_mri_bands = my_key.ni_session1.addDigitalChannel(my_key.ni_device_ID1,my_key.port_mri_bands,my_key.ni_measurement_type);  end
     
     % first reading execution
-    my_key.first_val = my_key.ni_session.inputSingleScan;
+    my_key.first_val = [my_key.ni_session2.inputSingleScan,my_key.ni_session1.inputSingleScan];
 else
     my_key.first_val = [0, 0, 0];
 end

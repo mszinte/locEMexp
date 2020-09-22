@@ -80,8 +80,8 @@ for t = 1:const.seq_num
                     keyPressed              =   keyPressed+keyP;
                     keyCode                 =   keyCode+keyC;
                 end
-                if const.room == 1
-                    input_return = my_key.ni_session.inputSingleScan;
+                if const.scanner == 1
+                    input_return = [my_key.ni_session2.inputSingleScan,my_key.ni_session1.inputSingleScan];
 
                     if input_return(my_key.idx_mri_bands) == ~expDes.mri_band_val
                         keyPressed              = 1;
@@ -282,8 +282,8 @@ for t = 1:const.seq_num
                 keyCode                 =   keyCode+keyC;
             end
 
-            if const.room == 1
-                input_return = my_key.ni_session.inputSingleScan;
+            if const.scanner == 1
+                input_return = [my_key.ni_session2.inputSingleScan,my_key.ni_session1.inputSingleScan];
 
                 % mri trigger
                 if input_return(my_key.idx_mri_bands) == ~expDes.mri_band_val
