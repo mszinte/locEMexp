@@ -28,6 +28,10 @@ if const.expStart
     end
 end
 
+if const.training
+    const.sjct = sprintf('%st',const.sjct);
+end
+
 const.runNum            =   input(sprintf('\n\tRun number (1 to %d): ',length(const.cond_run_order)));
 if isempty(const.runNum)
     error('Incorrect run number');

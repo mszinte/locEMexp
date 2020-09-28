@@ -86,6 +86,7 @@ while ~record
             if error==0
                 record                  =   1;
                 Eyelink('message', 'RECORD_START');
+                Eyelink('command', sprintf('record_status_message ''RUN %i''',const.runNum));
             else
                 record                  =   0;
                 Eyelink('message', 'RECORD_FAILURE');
