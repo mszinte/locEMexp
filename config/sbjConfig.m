@@ -32,6 +32,13 @@ if const.training
     const.sjct = sprintf('%st',const.sjct);
 end
 
+const.sesNum = input(sprintf('\n\tSession number: '));
+if const.sesNum > 9
+    const.session           =  sprintf('ses-%i',const.sesNum);
+else
+    const.session           =  sprintf('ses-0%i',const.sesNum);
+end
+
 const.runNum            =   input(sprintf('\n\tRun number (1 to %d): ',length(const.cond_run_order)));
 if isempty(const.runNum)
     error('Incorrect run number');
