@@ -27,7 +27,7 @@ else
 end
 
 % Define directory
-const.dat_output_file   =   sprintf('data/%s/%s/func/%s_task-%s%s_%s',const.sjct,const.session,const.sjct,const.cond2_txt,const.cond1_txt,const.run_txt);
+const.dat_output_file   =   sprintf('data/%s/%s/func/%s_%s_task-%s%s_%s',const.sjct,const.session,const.sjct,const.session,const.cond2_txt,const.cond1_txt,const.run_txt);
 
 % Eye data
 const.eyelink_temp_file =   'XX.edf';
@@ -54,7 +54,7 @@ if ~isdir(sprintf('data/%s/%s/add/',const.sjct,const.session))
 end
 
 % Define directory
-const.add_output_file   =   sprintf('data/%s/%s/add/%s_task-%s%s_%s',const.sjct,const.session,const.sjct,const.cond2_txt,const.cond1_txt,const.run_txt);
+const.add_output_file   =   sprintf('data/%s/%s/add/%s_%s_task-%s%s_%s',const.sjct,const.session,const.sjct,const.session,const.cond2_txt,const.cond1_txt,const.run_txt);
 
 % Define .mat saving file
 const.mat_file          =   sprintf('%s_matFile.mat',const.add_output_file);
