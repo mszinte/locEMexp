@@ -187,6 +187,7 @@ for t = 1:const.seq_num
                 expDes.vid_num          =   expDes.vid_num + 1;
                 image_vid               =   Screen('GetImage', scr.main);
                 imwrite(image_vid,sprintf('%s_frame_%i.png',const.movie_image_file,expDes.vid_num))
+                open(const.vid_obj);
                 writeVideo(const.vid_obj,image_vid);
             end
 
