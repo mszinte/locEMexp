@@ -75,6 +75,7 @@ if const.mkVideo
     end
     const.movie_image_file  =   sprintf('others/%s%s_vid/%s%s_vid',const.cond2_txt,const.cond1_txt,const.cond2_txt,const.cond1_txt);
     const.movie_file        =   sprintf('others/%s%s_vid.mp4',const.cond2_txt,const.cond1_txt);
+     
 end
 
 end
